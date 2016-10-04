@@ -83,7 +83,7 @@
 
     </div>
 
-    <div ng-if="!vm.dayView.verticalView">
+    <div class="user-list" ng-if="!vm.dayView.verticalView">
 
       <!--view events by attendee-->
       <div ng-if="vm.dayView.hasAttendee">
@@ -91,7 +91,7 @@
         <div ng-repeat="user in ['Houssem', 'Ghassen', 'Bilel'] track by $index" style="margin-top: 50px">
 
           <div>{{user}}</div>
-
+            <!--
           <div ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id" ng-if="user === dayEvent.event.eventAssigned"
                ng-style="{
               backgroundColor: dayEvent.event.color.secondary,
@@ -101,11 +101,12 @@
             {{dayEvent | json}}
             <span ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></span>
           </div>
+          -->
 
         </div>
 
       </div>
-    </div>
+    </div><!--.user-list-->
 
   </div>
 
