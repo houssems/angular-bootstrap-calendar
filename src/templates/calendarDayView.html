@@ -83,15 +83,19 @@
 
     </div>
 
-    <div class="user-list" ng-if="!vm.dayView.verticalView">
+    <!--class="user-list"-->
+    <div ng-if="!vm.dayView.verticalView">
 
       <!--view events by attendee-->
       <div ng-if="vm.dayView.hasAttendee" style="margin-top: 60px">
 
-        <div ng-repeat="user in ['Houssem', 'Ghassen', 'Bilel'] track by $index" style="margin-top: 50px">
+        <!--<div ng-repeat="attendee in vm.attendees track by $index" style="height: 50px;">-->
+          <!--{{attendee}}-->
+          <!--</div>-->
 
         <!--attendee events-->
-        <div ng-repeat="attendee in vm.attendees track by $index" style="height: 50px;">
+        <div ng-repeat="attendee in vm.attendees track by $index"
+             ng-style=" {height: vm.dayView.eventHeight}">
 
 
           <div ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"

@@ -235,7 +235,6 @@ angular
           minute: dayEnd[1]
         },
         eventWidth: 150,
-        eventHeight: 100,
         segmentHeight: 30
       });
 
@@ -255,8 +254,8 @@ angular
     function getEventsWidth(events) {
 
       events.forEach(function (event) {
-        
-      })
+
+      });
       console.log(events);
     }
 
