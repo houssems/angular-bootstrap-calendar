@@ -8,7 +8,7 @@ angular
     allDateFormats: {
       angular: {
         date: {
-          hour: 'ha',
+          hour: 'HH:mm',
           day: 'd MMM',
           month: 'MMMM',
           weekDay: 'EEEE',
@@ -80,6 +80,8 @@ angular
     },
     dayView: {
       verticalView: true,
-      hasAttendee: false
+      hasAttendee: false,
+      width: 6,
+      eventHeight: '50px'
     }
   });
