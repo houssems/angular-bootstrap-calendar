@@ -21,15 +21,17 @@ body {
 .cal-day-box .cal-day-panel-hour {
     background-color: #ececec;
     margin: 0 !important;
+    width: 2500px !important;
 }
 .cal-day-box .cal-day-panel-hour .hourGrid {
     width: 90px;
     float: left;
 }
-.cal-day-hour-part-time strong {
+.cal-day-hour-part-time p {
     color: #292b37;
     font-size: 15px;
     text-align: center;
+    margin: 10px 0;
 }
 /*
 .cal-day-box {
@@ -40,8 +42,12 @@ body {
     width: 225px !important;
     background-color: red;
 }
-
-
+.SingleHour {
+    /*float: left; 
+    height: 34px; 
+    overflow: hidden; */
+    text-align: center;
+}
 
 
 
