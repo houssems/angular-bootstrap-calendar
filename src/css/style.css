@@ -12,5 +12,56 @@
     Style
 \*------------------------------------*/
 
+body {
+    font-family: 'ProximaNovaSoft-Regular';
+}
+.cal-day-box .cal-day-panel {
+    padding: 0 !important;
+}
+.cal-day-box .cal-day-panel-hour {
+    background-color: #ececec;
+    margin: 0 !important;
+}
+.cal-day-box .cal-day-panel-hour .hourGrid {
+    width: 90px;
+    float: left;
+}
+.cal-day-hour-part-time strong {
+    color: #292b37;
+    font-size: 15px;
+    text-align: center;
+}
+/*
+.cal-day-box {
+    position: fixed;
+    left: 0;
+}*/
+.user-list {
+    width: 225px !important;
+    background-color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

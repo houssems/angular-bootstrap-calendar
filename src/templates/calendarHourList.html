@@ -1,19 +1,18 @@
-<div class="cal-day-panel-hour" ng-if="vm.horizontalView">
+<div class="cal-day-panel-hour clearfix" ng-if="vm.horizontalView">
 
 
 
-  <div ng-style="{ width: '6%', float: 'left' }"
-       ng-repeat="hour in vm.hourGrid track by $index">
+  <div class="hourGrid" ng-repeat="hour in vm.hourGrid track by $index">
     <div    style="float: left; height: 34px; overflow: hidden; text-align: center;"
             ng-repeat="segment in hour.segments track by $index"
             mwl-droppable
             ng-if="!vm.dayWidth">
       <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart"></strong>
+        <p ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart"></p>
       </div>
     </div>
-  </div>
-</div>
+  </div><!--.hourGrid-->
+</div><!--.cal-day-panel-hour-->
 
 <div class="cal-day-panel-hour" ng-if="!vm.horizontalView">
 
@@ -33,19 +32,21 @@
       on-drag-select-move="vm.onDragSelectMove(vm.getClickedDate(segment.date, vm.dayViewSplit * ($index + 1)))"
       on-drag-select-end="vm.onDragSelectEnd(vm.getClickedDate(segment.date, vm.dayViewSplit * ($index + 1)))"
       ng-if="!vm.dayWidth">
-      <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-show="segment.isStart"></strong>
-      </div>
-    </div>
+
+        <div class="cal-day-hour-part-time">
+            <p ng-bind="segment.date | calendarDate:'hour':true" ng-show="segment.isStart"></p>
+        </div><!--.cal-day-hour-part-time-->
+
+    </div><!--.cal-day-hour-part-->
 
     <div
       class="cal-day-hour-part"
       ng-repeat="segment in hour.segments track by $index"
       ng-if="vm.dayWidth">
-      <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-show="segment.isStart"></strong>
+        <div class="cal-day-hour-part-time">
+            <strong ng-bind="segment.date | calendarDate:'hour':true" ng-show="segment.isStart"></strong>
         &nbsp;
-      </div>
+        </div><!--.cal-day-hour-part-time-->
       <div
         class="cal-day-hour-part-spacer"
         ng-repeat="day in segment.days track by $index"
@@ -60,9 +61,9 @@
         on-drag-select-start="vm.onDragSelectStart(vm.getClickedDate(segment.date, vm.dayViewSplit * $parent.$index, $index), $index)"
         on-drag-select-move="vm.onDragSelectMove(vm.getClickedDate(segment.date, vm.dayViewSplit * ($parent.$index + 1), vm.dateRangeSelect.dayIndex))"
         on-drag-select-end="vm.onDragSelectEnd(vm.getClickedDate(segment.date, vm.dayViewSplit * ($parent.$index + 1), vm.dateRangeSelect.dayIndex))">
-      </div>
-    </div>
+      </div><!--.cal-day-hour-part-spacer-->
+    </div><!--.cal-day-hour-part-->
 
-  </div>
+  </div><!--.cal-day-hour-->
 
-</div>
+</div><!--.cal-day-panel-hour-->
