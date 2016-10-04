@@ -1,307 +1,344 @@
-# angular-seed — the seed for AngularJS apps
+# Angular Bootstrap Calendar
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mattlewis92/angular-bootstrap-calendar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/mattlewis92/angular-bootstrap-calendar.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-bootstrap-calendar)
+[![Bower version](https://badge.fury.io/bo/angular-bootstrap-calendar.svg)](http://badge.fury.io/bo/angular-bootstrap-calendar)
+[![npm version](https://badge.fury.io/js/angular-bootstrap-calendar.svg)](http://badge.fury.io/js/angular-bootstrap-calendar)
+[![devDependency Status](https://david-dm.org/mattlewis92/angular-bootstrap-calendar/dev-status.svg)](https://david-dm.org/mattlewis92/angular-bootstrap-calendar?type=dev)
+[![GitHub issues](https://img.shields.io/github/issues/mattlewis92/angular-bootstrap-calendar.svg)](https://github.com/mattlewis92/angular-bootstrap-calendar/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mattlewis92/angular-bootstrap-calendar.svg)](https://github.com/mattlewis92/angular-bootstrap-calendar/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-bootstrap-calendar/master/LICENSE)
 
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
+## Table of contents
 
-The seed app doesn't do much, just shows how to wire two controllers and views together.
+- [Demo](#demo)
+- [About](#about)
+- [Installation](#installation)
+- [Documentation](#documentation)
+- [Development](#development)
+- [License](#licence)
 
+## Demo
 
-## Getting Started
+https://mattlewis92.github.io/angular-bootstrap-calendar/
 
-To get you started you can simply clone the angular-seed repository and install the dependencies:
+## About
 
-### Prerequisites
+This plugin is an AngularJS port of the original jQuery bootstrap calendar that can be found here:
+http://bootstrap-calendar.azurewebsites.net/
 
-You need git to clone the angular-seed repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
+The layout and functionality is intended to be exactly the same, but without the overhead of including jQuery just for a calendar.
 
-We also use a number of node.js tools to initialize and test angular-seed. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
+All credits for the UI/UX and the less files of the calendar go to the original author.
 
-### Clone angular-seed
+Pull requests are welcome.
 
-Clone the angular-seed repository using [git][git]:
+Looking for an angular2 version of this module? Development is underway here: https://github.com/mattlewis92/angular2-calendar
 
-```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
-```
+## Installation
 
-If you just want to start a new project without the angular-seed commit history then you can do:
+The calendar has a few dependencies, these are as follows, and must be included before this libraries files:
 
-```bash
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
-```
+* [AngularJS](https://angularjs.org/) 1.3.x, 1.4.x and 1.5.x are supported
+* [Bootstrap](http://getbootstrap.com/) 3+ (CSS only)
+* [Moment.js](http://momentjs.com/)
 
-The `depth=1` tells git to only pull down one commit worth of historical data.
+**Optional dependencies:**
+* [ui-bootstrap](http://angular-ui.github.io/bootstrap/) (0.14.0+, optional, include for collapse animations and tooltips.
+* [interact.js](http://interactjs.io/) (optional, include to allow drag and drop on the calendar)
+* [ngTouch](https://docs.angularjs.org/api/ngTouch) (optional, include if using the calendar on mobile devices. You will also need to enable `$touchProvider.ngClickOverrideEnabled(true)` on angular 1.5.0+)
 
-### Install Dependencies
-
-We have two kinds of dependencies in this project: tools and angular framework code.  The tools help
-us manage and test the application.
-
-* We get the tools we depend upon via `npm`, the [node package manager][npm].
-* We get the angular code via `bower`, a [client-side code package manager][bower].
-
-We have preconfigured `npm` to automatically run `bower` so we can simply do:
-
-```
-npm install
-```
-
-Behind the scenes this will also call `bower install`.  You should find that you have two new
-folders in your project.
-
-* `node_modules` - contains the npm packages for the tools we need
-* `app/bower_components` - contains the angular framework files
-
-*Note that the `bower_components` folder would normally be installed in the root folder but
-angular-seed changes this location through the `.bowerrc` file.  Putting it in the app folder makes
-it easier to serve the files by a webserver.*
-
-### Run the Application
-
-We have preconfigured the project with a simple development web server.  The simplest way to start
-this server is:
+You can install through bower:
 
 ```
-npm start
+bower install --save angular-bootstrap-calendar
 ```
 
-Now browse to the app at `http://localhost:8000/index.html`.
-
-
-
-## Directory Layout
+You will then need to include the JS and CSS files for the plugin:
 
 ```
-app/                    --> all of the source files for the application
-  app.css               --> default stylesheet
-  components/           --> all app specific modules
-    version/              --> version related components
-      version.js                 --> version module declaration and basic "version" value service
-      version_test.js            --> "version" value service tests
-      version-directive.js       --> custom directive that returns the current app version
-      version-directive_test.js  --> version directive tests
-      interpolate-filter.js      --> custom interpolation filter
-      interpolate-filter_test.js --> interpolate filter tests
-  view1/                --> the view1 view template and logic
-    view1.html            --> the partial template
-    view1.js              --> the controller logic
-    view1_test.js         --> tests of the controller
-  view2/                --> the view2 view template and logic
-    view2.html            --> the partial template
-    view2.js              --> the controller logic
-    view2_test.js         --> tests of the controller
-  app.js                --> main application module
-  index.html            --> app layout file (the main html template file of the app)
-  index-async.html      --> just like index.html, but loads js files asynchronously
-karma.conf.js         --> config file for running unit tests with Karma
-e2e-tests/            --> end-to-end tests
-  protractor-conf.js    --> Protractor config file
-  scenarios.js          --> end-to-end scenarios to be run by Protractor
+<link href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
+<script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
 ```
 
-## Testing
+And finally add the module dependency in your AngularJS app (you can remove ui.bootstrap if you don't want the extra dependency - it is only required for collapse animations and tooltips):
 
-There are two kinds of tests in the angular-seed application: Unit tests and end-to-end tests.
-
-### Running Unit Tests
-
-The angular-seed app comes preconfigured with unit tests. These are written in
-[Jasmine][jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
-configuration file to run them.
-
-* the configuration is found at `karma.conf.js`
-* the unit tests are found next to the code they are testing and are named as `..._test.js`.
-
-The easiest way to run the unit tests is to use the supplied npm script:
-
-```
-npm test
+```javascript
+angular.module('myApp', ['mwl.calendar', 'ui.bootstrap']);
 ```
 
-This script will start the Karma test runner to execute the unit tests. Moreover, Karma will sit and
-watch the source and test files for changes and then re-run the tests whenever any of them change.
-This is the recommended strategy; if your unit tests are being run every time you save a file then
-you receive instant feedback on any changes that break the expected code functionality.
-
-You can also ask Karma to do a single run of the tests and then exit.  This is useful if you want to
-check that a particular version of the code is operating as expected.  The project contains a
-predefined script to do this:
-
+Alternatively you can install through npm:
 ```
-npm run test-single-run
+npm install --save angular-bootstrap-calendar
 ```
 
-
-### End to end testing
-
-The angular-seed app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
-are run with the [Protractor][protractor] End-to-End test runner.  It uses native events and has
-special features for Angular applications.
-
-* the configuration is found at `e2e-tests/protractor-conf.js`
-* the end-to-end tests are found in `e2e-tests/scenarios.js`
-
-Protractor simulates interaction with our web app and verifies that the application responds
-correctly. Therefore, our web server needs to be serving up the application, so that Protractor
-can interact with it.
-
+Or if using npm 3+ where peer dependencies aren't automatically installed:
 ```
-npm start
+npm install --save angular-bootstrap-calendar angular bootstrap moment angular-ui-bootstrap
 ```
 
-In addition, since Protractor is built upon WebDriver we need to install this.  The angular-seed
-project comes with a predefined script to do this:
+Then add as a dependency to your app:
 
-```
-npm run update-webdriver
-```
-
-This will download and install the latest version of the stand-alone WebDriver tool.
-
-Once you have ensured that the development web server hosting our application is up and running
-and WebDriver is updated, you can run the end-to-end tests using the supplied npm script:
-
-```
-npm run protractor
+```javascript
+angular.module('myApp', [require('angular-bootstrap-calendar'), require('angular-ui-bootstrap')]);
 ```
 
-This script will execute the end-to-end tests against the application being hosted on the
-development server.
+## Documentation
 
-**Note:**
-Under the hood, Protractor uses the [Selenium Standalone Server][selenium], which in turn requires 
-the [Java Development Kit (JDK)][jdk] to be installed on your local machine. Check this by running 
-`java -version` from the command line.
-
-If JDK is not already installed, you can download it [here][jdk-download].
-
-
-## Updating Angular
-
-Previously we recommended that you merge in changes to angular-seed into your own fork of the project.
-Now that the angular framework library code and tools are acquired through package managers (npm and
-bower) you can use these tools instead to update the dependencies.
-
-You can update the tool dependencies by running:
-
-```
-npm update
+There is a single directive exposed to create the calendar, use it like so:
+```javascript
+<mwl-calendar
+    view="calendarView"
+    view-date="viewDate"
+    events="events"
+    view-title="calendarTitle"
+    on-event-click="eventClicked(calendarEvent)"
+    on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+    cell-is-open="true">
+</mwl-calendar>
 ```
 
-This will find the latest versions that match the version ranges specified in the `package.json` file.
+An explanation of the properties is as follows:
 
-You can update the Angular dependencies by running:
+### view (required attribute)
 
-```
-bower update
-```
+This variable is a string that can be either `year`, `month`, `week` or `day`. Changing it will change the view of the calendar.
 
-This will find the latest versions that match the version ranges specified in the `bower.json` file.
-
-
-## Loading Angular Asynchronously
-
-The angular-seed project supports loading the framework and application scripts asynchronously.  The
-special `index-async.html` is designed to support this style of loading.  For it to work you must
-inject a piece of Angular JavaScript into the HTML page.  The project has a predefined script to help
-do this.
-
-```
-npm run update-index-async
+For the calendar to display this variable needs to be set like so:
+```javascript
+$scope.calendarView = 'month';
 ```
 
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html` page.
-You can run this every time you update the version of Angular that you are using.
+### view-date (required attribute)
 
+This variable holds the current date the calendar is centralised on. Each view will decide on its current year / month / week / day depending on the value of this variable.
 
-## Serving the Application Files
+### events (required attribute)
 
-While angular is client-side-only technology and it's possible to create angular webapps that
-don't require a backend server at all, we recommend serving the project files using a local
-webserver during development to avoid issues with security restrictions (sandbox) in browsers. The
-sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr,
-etc to function properly when an html page is opened via `file://` scheme instead of `http://`.
-
-
-### Running the App during Development
-
-The angular-seed project comes preconfigured with a local development webserver.  It is a node.js
-tool called [http-server][http-server].  You can start this webserver with `npm start` but you may choose to
-install the tool globally:
-
+An array of events to display on the calendar. For example:
+```javascript
+$scope.events = [
+  {
+    title: 'My event title', // The title of the event
+    startsAt: new Date(2013,5,1,1), // A javascript date object for when the event starts
+    endsAt: new Date(2014,8,26,15), // Optional - a javascript date object for when the event ends
+    color: { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
+      primary: '#e3bc08', // the primary event color (should be darker than secondary)
+      secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
+    },
+    actions: [{ // an array of actions that will be displayed next to the event title
+      label: '<i class=\'glyphicon glyphicon-pencil\'></i>', // the label of the action
+      cssClass: 'edit-action', // a CSS class that will be added to the action element so you can implement custom styling
+      onClick: function(args) { // the action that occurs when it is clicked. The first argument will be an object containing the parent event
+        console.log('Edit event', args.calendarEvent);
+      }
+    }],
+    draggable: true, //Allow an event to be dragged and dropped
+    resizable: true, //Allow an event to be resizable
+    incrementsBadgeTotal: true, //If set to false then will not count towards the badge total amount on the month and year view
+    recursOn: 'year', // If set the event will recur on the given period. Valid values are year or month
+    cssClass: 'a-css-class-name', //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
+    allDay: false // set to true to display the event as an all day event on the day view
+  }
+];
 ```
-sudo npm install -g http-server
+
+`title`, `color` and `startsAt` are required for all events.
+
+### view-title
+
+This variable will be assigned to the calendar title. If you want to change the formatting you can use the `calendarConfig` or just override the appropriate method in the `calendarTitle` factory.
+
+### on-event-click
+
+This expression is called when an event is clicked on the calendar. `calendarEvent` can be used in the expression and contains the calendar event that was clicked on.
+
+### on-event-times-changed
+
+This expression is called when an event is dragged and dropped or resized into a different date / time on the calendar. The available values that are passed to the expression are: `calendarEvent`, `calendarNewEventStart`, `calendarNewEventEnd` and `calendarDraggedFromDate` (month view only). The directive won't change the event object and leaves that up to you to implement. Please note drag and drop is only available by including the [interact.js](http://interactjs.io/) library.
+
+### on-timespan-click
+
+This expression is called when a month, day or hour on the calendar is clicked on the year, month and day views respectively. `calendarDate` can be used in the expression and contains the start of the month, day or hour that was clicked on. If on the month or year view `calendarCell` will contain cell data for the clicked day or month which you can then modify.
+
+### on-date-range-select
+
+This expression is called when a range of hours selected on the day view respectively. `calendarRangeStartDate` can be used in the expression and contains the start of the range, `calendarRangeEndDate` can be used in the expression and contains the end of the range.
+
+### cell-is-open
+
+A 2 way bound variable that when set to true will open the year or month view cell that corresponds to the date passed to the date object passed to `view-date`.
+
+### day-view-start
+
+An interpolated string in the form of hh:mm to start the day view at, e.g. setting it to 06:00 will start the day view at 6am. Any minutes must be divisible by the `day-view-split` value.
+
+### day-view-end
+
+An interpolated string in the form of hh:mm to end the day view at, e.g. setting it to 22:59 will end the day view at 11pm.
+
+### day-view-split
+
+The number of chunks to split the day view hours up into. Can be either 10, 15 or 30. Default: 30
+
+### day-view-event-chunk-size
+
+The number of pixels to "snap" event drag and resizes to. Default: 30
+
+### on-view-change-click
+
+An optional expression that is evaluated when the view is changed by clicking on a date. Return false from the expression function to disable the view change. `calendarDate` can be used in the expression and contains the date that was selected. `calendarNextView` is the view that the calendar will be changed to.
+
+### cell-modifier
+
+An optional expression that is evaluated on each cell generated for the year, month and day views. `calendarCell` can be used in the expression and is an object containing the current cell data which you can modify (see the `calendarHelper` service source code or just console.log it to see what data is available). If you add the `cssClass` property it will be applied to the cell.
+
+### slide-box-disabled
+
+If set it true it will disable the slidebox on the month and year views
+
+### custom-template-urls
+
+An object where the key is the template name to override and the value is a path to a custom template for that calendar instance. If not set it will fallback to the value of `calendarConfig.templates`.
+
+For example, to change the month view template on just one instance of the month view:
+```
+// in your controller
+$templateCache.put('my-custom-template.html', 'Custom month view template here');
+
+// in your template
+<mwl-calendar custom-template-urls="{calendarMonthView: 'my-custom-template.html'}"></mwl-calendar>
 ```
 
-Then you can start your own development web server to serve static files from a folder by
-running:
+### template-scope
+An object containing a set of variables that will be available in a custom template as `vm.templateScope`
 
+## Configuring the calendar default config
+
+You can easily customise the date formats and i18n strings used throughout the calendar by using the `calendarConfig` value. Please note that these example formats are those used by moment.js and these won't work if using angular as the date formatter. Example usage:
+
+```javascript
+angular.module('myModule')
+  .config(function(calendarConfig) {
+
+    console.log(calendarConfig); //view all available config
+
+    calendarConfig.templates.calendarMonthView = 'path/to/custom/template.html'; //change the month view template globally to a custom template
+
+    calendarConfig.dateFormatter = 'moment'; //use either moment or angular to format dates on the calendar. Default angular. Setting this will override any date formats you have already set.
+
+    calendarConfig.allDateFormats.moment.date.hour = 'HH:mm'; //this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
+
+    calendarConfig.allDateFormats.moment.title.day = 'ddd D MMM'; //this will configure the day view title to be shorter
+
+    calendarConfig.i18nStrings.weekNumber = 'Week {week}'; //This will set the week number hover label on the month view
+
+    calendarConfig.displayAllMonthEvents = true; //This will display all events on a month view even if they're not in the current month. Default false.
+
+    calendarConfig.showTimesOnWeekView = true; //Make the week view more like the day view, with the caveat that event end times are ignored.
+
+  });
 ```
-http-server -a localhost -p 8000
+
+## Custom directive templates
+
+All calendar template urls can be changed using the `calendarConfig` as illustrated above.
+
+Please note that even patch releases may change templates which could break your app, so if using a custom template it is recommended that you pin the version of this module and review all changes when updating the version.
+
+## The mwl-date-modifier directive
+
+There is also a helper directive that you can use for the next, today and previous buttons. Use it like so:
+
+```html
+<button
+  class="btn btn-primary"
+  mwl-date-modifier
+  date="viewDate"
+  decrement="calendarView">
+  Previous
+</button>
+
+<button
+  class="btn btn-default"
+  mwl-date-modifier
+  date="viewDate"
+  set-to-today>
+  Today
+</button>
+
+<button
+  class="btn btn-primary"
+  mwl-date-modifier
+  date="viewDate"
+  increment="calendarView">
+  Next
+</button>
 ```
 
-Alternatively, you can choose to configure your own webserver, such as apache or nginx. Just
-configure your server to serve the files under the `app/` directory.
+## Internationalization and localization
 
+You can either use angular's date filter or moment.js to format dates. The default is to use angular. You can change the formatter to be moment like so:
 
-### Running the App in Production
+```javascript
+angular.module('myModule')
+  .config(function(calendarConfig) {
 
-This really depends on how complex your app is and the overall infrastructure of your system, but
-the general rule is that all you need in production are all the files under the `app/` directory.
-Everything else should be omitted.
+    calendarConfig.dateFormatter = 'moment'; // use moment to format dates
 
-Angular apps are really just a bunch of static html, css and js files that just need to be hosted
-somewhere they can be accessed by browsers.
+  });
+```
 
-If your Angular app is talking to the backend server via xhr or other means, you need to figure
-out what is the best way to host the static files to comply with the same origin policy if
-applicable. Usually this is done by hosting the files by the backend server or through
-reverse-proxying the backend server(s) and webserver(s).
+Then you just need to include the appropriate locale files for your app.
 
+If you want to dynamically change the locale for angular and not include all of the available angular locale files [try this library](https://github.com/lgalfaso/angular-dynamic-locale).
 
-## Continuous Integration
+Otherwise if using moment you can call `moment.locale('YOUR_LOCALE_STRING')` to change the locale and the calendar will auto update.
 
-### Travis CI
+To set Monday as the first day of the week, configure it in moment like so (even if using angular for formatting dates):
+```javascript
+moment.locale('en_gb', {
+  week : {
+    dow : 1 // Monday is the first day of the week
+  }
+});
+```
 
-[Travis CI][travis] is a continuous integration service, which can monitor GitHub for new commits
-to your repository and execute scripts such as building the app or running tests. The angular-seed
-project contains a Travis configuration file, `.travis.yml`, which will cause Travis to run your
-tests when you push to GitHub.
+For a full list of all available formats and their defaults see [calendarConfig.js](https://github.com/mattlewis92/angular-bootstrap-calendar/blob/master/src/services/calendarConfig.js)
 
-You will need to enable the integration between Travis and GitHub. See the Travis website for more
-instruction on how to do this.
+## Development
 
-### CloudBees
+### Prepare your environment
+* Install [Node.js](http://nodejs.org/) and NPM (should come with)
+* Install local dev dependencies: `npm install` while current directory is this repo
 
-CloudBees have provided a CI/deployment setup:
+### Development server
+Run `npm start` to start a development server on port 8000 with auto reload + run tests.
 
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">
-<img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
+### Testing
+Run `npm test` to run tests once or `npm run test:watch` to continually run tests (this is automatic when you run `npm start`).
 
-If you run this, you will get a cloned version of this repo to start working on in a private git repo,
-along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
+### Build
+Run `npm run build` to build the project files in the dist folder
 
+## License
 
-## Contact
+The MIT License
 
-For more information on AngularJS please check out http://angularjs.org/
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-[bower]: http://bower.io
-[git]: http://git-scm.com/
-[http-server]: https://github.com/nodeapps/http-server
-[jasmine]: https://jasmine.github.io
-[jdk]: https://en.wikipedia.org/wiki/Java_Development_Kit
-[jdk-download]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[karma]: https://karma-runner.github.io
-[node]: https://nodejs.org
-[npm]: https://www.npmjs.org/
-[protractor]: https://github.com/angular/protractor
-[selenium]: http://docs.seleniumhq.org/
-[travis]: https://travis-ci.org/
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
