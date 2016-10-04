@@ -252,14 +252,24 @@ angular
     }
 
 
-    function getAttendeeList(events) {
-      return events.filter(function (value, index, self) {
+    function getEventsWidth(events) {
 
-        console.log(value, index, self)
-        return self.indexOf(value.event.eventAssigned) === index;
-      }).map(function (event) {
-        return event.eventAssigned;
+      events.forEach(function (event) {
+        
       })
+      console.log(events);
+    }
+
+    function getAttendeeList(events) {
+
+      var results = [];
+
+      events.forEach(function (event) {
+        if (results.indexOf(event.event.eventAssigned) === -1)
+          results.push(event.event.eventAssigned);
+      });
+
+      return results;
     }
 
     function getWeekViewWithTimes(events, viewDate, dayViewStart, dayViewEnd, dayViewSplit) {
@@ -330,7 +340,8 @@ angular
       formatDate: formatDate,
       loadTemplates: loadTemplates,
       eventIsInPeriod: eventIsInPeriod, //expose for testing only
-      getAttendeeList: getAttendeeList
+      getAttendeeList: getAttendeeList,
+      getEventsWidth: getEventsWidth
     };
 
   });

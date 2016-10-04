@@ -2,7 +2,8 @@
 
 
 
-  <div style="width: 6%; float: left;" ng-repeat="hour in vm.hourGrid track by $index">
+  <div ng-style="{ width: '6%', float: 'left' }"
+       ng-repeat="hour in vm.hourGrid track by $index">
     <div    style="float: left; height: 34px; overflow: hidden; text-align: center;"
             ng-repeat="segment in hour.segments track by $index"
             mwl-droppable

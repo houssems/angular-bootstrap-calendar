@@ -27,7 +27,7 @@
 </div>
 
 <div class="cal-day-box">
-  <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px'}">
+  <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
 
     <mwl-calendar-hour-list
       view="'day'"
@@ -86,19 +86,26 @@
     <div ng-if="!vm.dayView.verticalView">
 
       <!--view events by attendee-->
-      <div ng-if="vm.dayView.hasAttendee">
+      <div ng-if="vm.dayView.hasAttendee" style="margin-top: 60px">
 
-        <div ng-repeat="user in ['Houssem', 'Ghassen', 'Bilel'] track by $index" style="margin-top: 50px">
+        <!--attendee list-->
+        <!--<div style="width: 60px; float: left;">-->
+          <!--<div ng-repeat="attendee in vm.attendees track by $index">{{attendee}}</div>-->
+        <!--</div>-->
 
-          <div>{{user}}</div>
+        <!--attendee events-->
+        <div ng-repeat="attendee in vm.attendees track by $index" style="height: 50px;">
 
-          <div ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id" ng-if="user === dayEvent.event.eventAssigned"
+
+          <div ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
+               ng-if="attendee === dayEvent.event.eventAssigned"
                ng-style="{
+               width: '14%',
+               height: '100%',
+               float: 'left',
               backgroundColor: dayEvent.event.color.secondary,
               borderColor: dayEvent.event.color.primary
             }">
-
-            {{dayEvent | json}}
             <span ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></span>
           </div>
 

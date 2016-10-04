@@ -80,6 +80,7 @@ angular
     },
     dayView: {
       verticalView: true,
-      hasAttendee: false
+      hasAttendee: false,
+      width: 6
     }
   });
