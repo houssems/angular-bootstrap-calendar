@@ -90,9 +90,13 @@
       <!--view events by attendee-->
       <div class="day-view-item"  ng-if="vm.dayView.hasAttendee">
 
-        <!--<div ng-repeat="attendee in vm.attendees track by $index" style="height: 50px;">-->
-          <!--{{attendee}}-->
-          <!--</div>-->
+        <div class="user-list">
+            <div class="userItem"  ng-repeat="attendee in vm.attendees track by $index">          
+                 <a href="#" > 
+                  {{attendee}}
+                </a>
+            </div>
+        </div><!--.user-list-->
 
         <!--attendee events-->
         <div class="day-view-style" ng-repeat="attendee in vm.attendees track by $index"
