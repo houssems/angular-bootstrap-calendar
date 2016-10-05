@@ -30,25 +30,27 @@ angular
     date.setHours(10, 20);
     vm.events = [
       {
-        title: 'An event',
+        title: 'Jule Vilard',
         color: calendarConfig.colorTypes.warning,
         startsAt: moment().startOf('day').hour(1).minute(20).toDate(),
         endsAt: moment().startOf('day').hour(2).minute(40).toDate(),
         draggable: true,
         resizable: true,
         actions: actions,
-        eventAssigned: 'Ghassen'
+        eventAssigned: 'Ghassen',
+        class: 'bgOne'
       }, {
-        title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
+        title: 'Lucienne Dumond',
         color: calendarConfig.colorTypes.info,
         startsAt: moment().startOf('day').hour(3).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         draggable: true,
         resizable: true,
         actions: actions,
-        eventAssigned: 'Ghassen'
+        eventAssigned: 'Ghassen',
+        class: 'bgTwo'
       }, {
-        title: 'This is a really long event title that occurs on every year',
+        title: 'Louis Renaud',
         color: calendarConfig.colorTypes.important,
         startsAt: moment().startOf('day').hour(4).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
@@ -56,7 +58,8 @@ angular
         draggable: true,
         resizable: true,
         actions: actions,
-        eventAssigned: 'Houssem'
+        eventAssigned: 'Houssem',
+        class: 'bgthree'
       }
     ];
 

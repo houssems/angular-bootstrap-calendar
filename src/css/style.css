@@ -67,10 +67,28 @@ body {
     border-bottom: 1px solid #fff;
 }
 .dayEvent {
+    border-left-width: 5px;
+    border-left-style: solid;
+    background-color: #fff;
+    padding: 14px 19px;
+}
+.dayEvent.bgOne {
+    border-left-color: #88c75a;
+}
+.dayEvent.bgTwo {
+    border-left-color: #736ae4;
+}
+.dayEvent.bgthree {
+    border-left-color: #f7941e;
+}
+.dayEvent .phoneEvent {
+    margin: 0 0 10px;
+    color: #696a70;
+    font-size: 12px;
+}
+.dayEvent .TextEvent {
     
 }
-
-
 
 
 

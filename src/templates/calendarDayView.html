@@ -99,19 +99,25 @@
              ng-style=" {height: vm.dayView.eventHeight}">
 
 
-          <div class="dayEvent" ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
+          <div class="dayEvent  bgTwo" ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
                ng-if="attendee === dayEvent.event.eventAssigned"
                ng-style="{
                left: dayEvent.left + 'px',
                position: 'absolute',
                width: dayEvent.width + 'px',
                height: '50px',
-               float: 'left',
-              backgroundColor: dayEvent.event.color.secondary,
-              borderColor: dayEvent.event.color.primary
+               float: 'left'
             }">
-            <span ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></span>
-          </div>
+            
+          
+       
+            <div class="phoneEvent">
+                06 21 25 54 58
+            </div>
+            <div class="TextEvent" ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml">               
+            </div>
+            
+          </div><!--.dayEvent-->
 
         </div>
 
