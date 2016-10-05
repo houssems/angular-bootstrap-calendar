@@ -28,27 +28,27 @@ angular
     vm.events = [
       {
         title: 'Jule Vilard',
-        color: calendarConfig.colorTypes.warning,
+        color: {primary: 'blue'},
         startsAt: moment().startOf('day').hour(1).minute(20).toDate(),
         endsAt: moment().startOf('day').hour(2).minute(40).toDate(),
         draggable: true,
         resizable: true,
         actions: actions,
         eventAssigned: 'Ghassen',
-        class: 'bgOne'
+        // cssClass: 'bgOne'
       }, {
         title: 'Lucienne Dumond',
-        color: calendarConfig.colorTypes.info,
+        color: {primary: '#faa'},
         startsAt: moment().startOf('day').hour(3).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         draggable: true,
         resizable: true,
         actions: actions,
         eventAssigned: 'Ghassen',
-        class: 'bgTwo'
+        // cssClass: 'bgTwo'
       }, {
         title: 'Louis Renaud',
-        color: calendarConfig.colorTypes.important,
+        color: {primary: '#000'},
         startsAt: moment().startOf('day').hour(4).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         recursOn: 'year',
@@ -56,7 +56,7 @@ angular
         resizable: true,
         actions: actions,
         eventAssigned: 'Houssem',
-        class: 'bgthree'
+        // cssClass: 'bgthree'
       }
     ];
 
