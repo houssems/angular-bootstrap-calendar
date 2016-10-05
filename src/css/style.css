@@ -34,18 +34,34 @@ body {
     text-align: center;
     margin: 10px 0;
 }
-
 .cal-day-box {
     position: relative;
 }
 .user-list {
     width: 225px !important;
-    background-color: red;
+    background-color: #fff;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 42px;
+}
+.user-list .userItem {
+   
+    
+}
+.user-list a {
+    color: #292b37;
+    font-family: 'ProximaNovaSoft-Bold';
+    font-size: 15px;
+    display: block;
+    border-bottom: 1px solid #d4d5d6;
+    padding: 25px 24px;
+    
+}
+.user-list a:hover {
+    text-decoration: none;
 }
 .SingleHour {
-    /*float: left; 
-    height: 34px; 
-    overflow: hidden; */
     text-align: center;
 }
 .detector-hours {
@@ -87,7 +103,9 @@ body {
     font-size: 12px;
 }
 .dayEvent .TextEvent {
-    
+    color: #292b37;
+    font-family: 'ProximaNovaSoft-Bold';
+    font-size: 15px;
 }
 
 
