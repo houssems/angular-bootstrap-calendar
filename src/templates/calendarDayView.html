@@ -27,7 +27,7 @@
 </div>
 
 <div class="cal-day-box">
-  <span class="detector-hours"></span>
+  <span class="detector-hours" ng-style="{left: vm.todayTimePosition + 'px'}" ng-if="!vm.dayView.verticalView && vm.dayView.showNowBar && vm.todayTimePosition > -1"></span>
   <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
 
     <mwl-calendar-hour-list
@@ -91,8 +91,8 @@
       <div class="day-view-item"  ng-if="vm.dayView.hasAttendee">
 
         <div class="user-list">
-            <div class="userItem"  ng-repeat="attendee in vm.attendees track by $index">          
-                 <a href="#" > 
+            <div class="userItem"  ng-repeat="attendee in vm.attendees track by $index">
+                 <a href="#" >
                   {{attendee}}
                 </a>
             </div>

@@ -37,6 +37,9 @@ angular
       if (vm.dayView.hasAttendee) {
         vm.attendees = calendarHelper.getAttendeeList(view.events);
         vm.nonAllDayEvents = calendarHelper.getEventsWidth(view.events);
+        vm.todayTimePosition = calendarHelper.getTodayPosition(vm.viewDate);
+
+        console.log(vm.todayTimePosition);
       }
 
 
