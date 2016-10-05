@@ -6,6 +6,7 @@ angular
     calendarConfig.dayView.attendeeBlockHeight = 85;
     calendarConfig.dayView.eventHeight = 80;
     calendarConfig.dayView.showNowBar = true;
+    calendarConfig.showTimesOnWeekView = true;
 
   })
   .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig) {

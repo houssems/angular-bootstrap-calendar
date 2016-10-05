@@ -8,7 +8,7 @@ angular
   .controller('MwlCalendarHourListCtrl', function($scope, moment, calendarHelper, calendarConfig) {
     var vm = this;
 
-    vm.horizontalView = true;//$scope.view && $scope.view === 'day' && !calendarConfig.dayView.verticalView;
+    vm.horizontalView = false;//$scope.view && $scope.view === 'day' && !calendarConfig.dayView.verticalView;
 
     console.log($scope.view, calendarConfig.dayView.verticalView);
     function updateDays() {

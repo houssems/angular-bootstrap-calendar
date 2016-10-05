@@ -17,6 +17,7 @@ body {
 }
 .cal-day-box .cal-day-panel {
     padding: 0 !important;
+    height: 1000px;
 }
 .cal-day-box .cal-day-panel-hour {
     background-color: #ececec;
