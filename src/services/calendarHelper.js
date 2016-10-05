@@ -291,6 +291,18 @@ angular
       return results;
     }
 
+    function getTodayPosition(daySelected) {
+
+      if (moment().isSame(daySelected, 'day')) {
+
+        var minuteWidth = calendarConfig.dayView.hourWidth / 60;
+
+        var divCenter = calendarConfig.dayView.hourWidth / 2;
+        var diff = moment(daySelected).diff(moment().startOf('day'), 'minutes');
+        
+      }
+    }
+
     function getWeekViewWithTimes(events, viewDate, dayViewStart, dayViewEnd, dayViewSplit) {
       var weekView = getWeekView(events, viewDate);
       var newEvents = [];
