@@ -81,7 +81,8 @@ angular
     dayView: {
       verticalView: true,
       hasAttendee: false,
-      eventHeight: '50px',
+      eventHeight: 50,
+      attendeeBlockHeight: 70,
       hourWidth: 90
     }
   });

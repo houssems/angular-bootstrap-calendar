@@ -3,6 +3,8 @@ angular
   .config(function (calendarConfig) {
     calendarConfig.dayView.hasAttendee = true;
     calendarConfig.dayView.verticalView = false;
+    calendarConfig.dayView.attendeeBlockHeight = 60;
+    calendarConfig.dayView.eventHeight = 50;
 
   })
   .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig) {
@@ -23,11 +25,6 @@ angular
         alert.show('Deleted', args.calendarEvent);
       }
     }];
-
-    var date = new Date();
-    date.setUTCHours(10, 20);
-
-    date.setHours(10, 20);
     vm.events = [
       {
         title: 'Jule Vilard',
