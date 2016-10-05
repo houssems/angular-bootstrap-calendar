@@ -43,10 +43,10 @@ body {
     position: absolute;
     z-index: 2;
     height: 100%;
-    top: 42px;
+    top: 43px;/*65*/
+    padding: 15px 0 0;
 }
 .user-list .userItem {
-   
     
 }
 .user-list a {
@@ -55,7 +55,10 @@ body {
     font-size: 15px;
     display: block;
     border-bottom: 1px solid #d4d5d6;
-    padding: 25px 24px;
+    padding: 30px 24px;
+}
+.user-list .userItem:nth-child(1) a {
+    border-top: 1px solid #d4d5d6;
 }
 .user-list a:hover {
     text-decoration: none;
@@ -79,7 +82,10 @@ body {
     background-color: #ececec;
 }
 .day-view-style {
-    border-bottom: 1px solid #fff;
+    background-image: url('../img/BgOnePixel.png');
+    background-repeat: repeat-x;
+    background-position: center center;
+    background-size: 1px auto;
 }
 .dayEvent {
     border-left-width: 5px;
