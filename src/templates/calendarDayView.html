@@ -31,7 +31,7 @@
   <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
 
     <mwl-calendar-hour-list
-      view="'day'"
+      view="day"
       day-view-start="vm.dayViewStart"
       day-view-end="vm.dayViewEnd"
       day-view-split="vm.dayViewSplit"
@@ -106,7 +106,7 @@
           <div class="dayEvent " ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
                ng-if="attendee === dayEvent.event.eventAssigned"
                mwl-draggable="dayEvent.event.draggable === true"
-               axis="'xy'"
+               axis="'x'"
                snap-grid="{x: vm.dayViewEventChunkSize || 45, y: vm.dayView.eventHeight}"
                on-drag="vm.eventDragged(dayEvent.event, x)"
                on-drag-end="vm.eventDragComplete(dayEvent.event, x)"

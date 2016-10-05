@@ -5,12 +5,11 @@ var calendarUtils = require('calendar-utils');
 
 angular
   .module('mwl.calendar')
-  .controller('MwlCalendarHourListCtrl', function($scope, moment, calendarHelper, calendarConfig) {
+  .controller('MwlCalendarHourListCtrl', function($scope, moment, calendarHelper, calendarConfig, $attrs) {
     var vm = this;
 
-    vm.horizontalView = true;//$scope.view && $scope.view === 'day' && !calendarConfig.dayView.verticalView;
+    vm.horizontalView = $attrs.view && $attrs.view === 'day' && !calendarConfig.dayView.verticalView;
 
-    console.log($scope.view, calendarConfig.dayView.verticalView);
     function updateDays() {
 
       vm.dayViewSplit = parseInt(vm.dayViewSplit);
