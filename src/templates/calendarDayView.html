@@ -88,18 +88,18 @@
     <div ng-if="!vm.dayView.verticalView">
 
       <!--view events by attendee-->
-      <div ng-if="vm.dayView.hasAttendee" style="margin-top: 60px">
+      <div class="day-view-item"  ng-if="vm.dayView.hasAttendee">
 
         <!--<div ng-repeat="attendee in vm.attendees track by $index" style="height: 50px;">-->
           <!--{{attendee}}-->
           <!--</div>-->
 
         <!--attendee events-->
-        <div ng-repeat="attendee in vm.attendees track by $index"
+        <div class="day-view-style" ng-repeat="attendee in vm.attendees track by $index"
              ng-style=" {height: vm.dayView.eventHeight}">
 
 
-          <div ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
+          <div class="dayEvent" ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
                ng-if="attendee === dayEvent.event.eventAssigned"
                ng-style="{
                left: dayEvent.left + 'px',
