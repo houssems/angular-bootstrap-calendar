@@ -50,7 +50,7 @@ angular
         eventAssigned: 'Ghassen',
         class: 'bgTwo'
       }, {
-        title: 'Louis Renaud',
+        title: 'Louis Renaud'
         color: calendarConfig.colorTypes.important,
         startsAt: moment().startOf('day').hour(4).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
