@@ -101,8 +101,10 @@
           <div ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
                ng-if="attendee === dayEvent.event.eventAssigned"
                ng-style="{
-               width: '14%',
-               height: '100%',
+               left: dayEvent.left + 'px',
+               position: 'absolute',
+               width: dayEvent.width + 'px',
+               height: '50px',
                float: 'left',
               backgroundColor: dayEvent.event.color.secondary,
               borderColor: dayEvent.event.color.primary

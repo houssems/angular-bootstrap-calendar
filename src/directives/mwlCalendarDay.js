@@ -30,15 +30,16 @@ angular
         vm.dayViewSplit
       );
 
-      if (vm.dayView.hasAttendee) {
-        vm.attendees = calendarHelper.getAttendeeList(view.events);
-        calendarHelper.getEventsWidth(view.events);
-
-      }
-
       vm.allDayEvents = view.allDayEvents;
       vm.nonAllDayEvents = view.events;
       vm.viewWidth = view.width + 62;
+
+      if (vm.dayView.hasAttendee) {
+        vm.attendees = calendarHelper.getAttendeeList(view.events);
+        vm.nonAllDayEvents = calendarHelper.getEventsWidth(view.events);
+      }
+
+
 
     }
 

@@ -253,10 +253,30 @@ angular
 
     function getEventsWidth(events) {
 
-      events.forEach(function (event) {
+      var minuteWidth = calendarConfig.dayView.hourWidth / 60;
 
+      var divCenter = calendarConfig.dayView.hourWidth / 2;
+      return events.map(function (event) {
+
+        var startDay = moment('00:00', 'HH:mm');
+        var startEvent = moment(event.event.startsAt, 'HH:mm');
+        var endEvent = moment(event.event.endsAt, 'HH:mm');
+
+        var diff = startEvent.diff(startDay, 'minutes');
+
+        event.left = (diff <= 0) ? 0 : (diff * minuteWidth + divCenter);
+
+
+        var width = endEvent.diff(startEvent, 'minutes');
+
+        if (diff + width > 1440) width = 1440 - diff;
+        
+        event.width = (width * minuteWidth);
+
+
+        console.log(event.left);
+        return event;
       });
-      console.log(events);
     }
 
     function getAttendeeList(events) {

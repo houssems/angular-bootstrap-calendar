@@ -23,12 +23,17 @@ angular
         alert.show('Deleted', args.calendarEvent);
       }
     }];
+
+    var date = new Date();
+    date.setUTCHours(10, 20);
+
+    date.setHours(10, 20);
     vm.events = [
       {
         title: 'An event',
         color: calendarConfig.colorTypes.warning,
-        startsAt: moment().toDate(),
-        endsAt: moment().add(1, 'hours').toDate(),
+        startsAt: moment().startOf('day').hour(1).minute(20).toDate(),
+        endsAt: moment().startOf('day').hour(2).minute(40).toDate(),
         draggable: true,
         resizable: true,
         actions: actions,
@@ -36,8 +41,8 @@ angular
       }, {
         title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
         color: calendarConfig.colorTypes.info,
-        startsAt: moment().subtract(1, 'day').toDate(),
-        endsAt: moment().add(5, 'days').toDate(),
+        startsAt: moment().startOf('day').hour(3).toDate(),
+        endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         draggable: true,
         resizable: true,
         actions: actions,
@@ -45,8 +50,8 @@ angular
       }, {
         title: 'This is a really long event title that occurs on every year',
         color: calendarConfig.colorTypes.important,
-        startsAt: moment().add(2, 'hours').toDate(),
-        endsAt: moment().add(4, 'hours').toDate(),
+        startsAt: moment().startOf('day').hour(4).toDate(),
+        endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         recursOn: 'year',
         draggable: true,
         resizable: true,
