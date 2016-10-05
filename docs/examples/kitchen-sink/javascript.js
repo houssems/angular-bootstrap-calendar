@@ -28,7 +28,7 @@ angular
     vm.events = [
       {
         title: 'Jule Vilard',
-        color: {primary: 'blue'},
+        color: {primary: '#88c75a'},
         startsAt: moment().startOf('day').hour(1).minute(20).toDate(),
         endsAt: moment().startOf('day').hour(2).minute(40).toDate(),
         draggable: true,
@@ -38,7 +38,7 @@ angular
         // cssClass: 'bgOne'
       }, {
         title: 'Lucienne Dumond',
-        color: {primary: '#faa'},
+        color: {primary: '#736ae4'},
         startsAt: moment().startOf('day').hour(3).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         draggable: true,
@@ -48,7 +48,7 @@ angular
         // cssClass: 'bgTwo'
       }, {
         title: 'Louis Renaud',
-        color: {primary: '#000'},
+        color: {primary: '#f7941e'},
         startsAt: moment().startOf('day').hour(4).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
         recursOn: 'year',
