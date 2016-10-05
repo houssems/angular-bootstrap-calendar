@@ -83,6 +83,7 @@ angular
       hasAttendee: false,
       eventHeight: 50,
       attendeeBlockHeight: 70,
-      hourWidth: 90
+      hourWidth: 90,
+      showNowBar: false
     }
   });

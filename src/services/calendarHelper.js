@@ -295,12 +295,15 @@ angular
 
       if (moment().isSame(daySelected, 'day')) {
 
-        var minuteWidth = calendarConfig.dayView.hourWidth / 60;
+        var minuteWidth = calendarConfig.dayView.hourWidth / 60,
+          divCenter = calendarConfig.dayView.hourWidth / 2,
+          diff = moment(daySelected).diff(moment().startOf('day'), 'minutes');
 
-        var divCenter = calendarConfig.dayView.hourWidth / 2;
-        var diff = moment(daySelected).diff(moment().startOf('day'), 'minutes');
-        
+        return diff * minuteWidth + divCenter;
+
       }
+
+      return -1;
     }
 
     function getWeekViewWithTimes(events, viewDate, dayViewStart, dayViewEnd, dayViewSplit) {
@@ -372,7 +375,8 @@ angular
       loadTemplates: loadTemplates,
       eventIsInPeriod: eventIsInPeriod, //expose for testing only
       getAttendeeList: getAttendeeList,
-      getEventsWidth: getEventsWidth
+      getEventsWidth: getEventsWidth,
+      getTodayPosition: getTodayPosition
     };
 
   });
