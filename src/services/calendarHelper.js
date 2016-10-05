@@ -244,7 +244,7 @@ angular
         delete event.end;
       });
 
-      console.log(view);
+      // console.log(view);
 
       return view;
 
@@ -270,11 +270,11 @@ angular
         var width = endEvent.diff(startEvent, 'minutes');
 
         if (diff + width > 1440) width = 1440 - diff;
-        
+
         event.width = (width * minuteWidth);
 
 
-        console.log(event.left);
+        // console.log(event.left);
         return event;
       });
     }
