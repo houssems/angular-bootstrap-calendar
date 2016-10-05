@@ -99,7 +99,7 @@
              ng-style=" {height: vm.dayView.attendeeBlockHeight + 'px'}">
 
 
-          <div class="dayEvent  bgTwo" ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
+          <div class="dayEvent " ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
                ng-if="attendee === dayEvent.event.eventAssigned"
                mwl-draggable="dayEvent.event.draggable === true"
                axis="'xy'"
