@@ -33,11 +33,10 @@ body {
     text-align: center;
     margin: 10px 0;
 }
-/*
+
 .cal-day-box {
-    position: fixed;
-    left: 0;
-}*/
+    position: relative;
+}
 .user-list {
     width: 225px !important;
     background-color: red;
@@ -48,6 +47,17 @@ body {
     overflow: hidden; */
     text-align: center;
 }
+.detector-hours {
+    width: 1px;
+    height: 100vh;
+    border-right: 1px solid #f22d48;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 100;
+}
+
 
 
 
