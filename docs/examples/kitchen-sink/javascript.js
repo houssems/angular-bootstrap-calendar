@@ -3,8 +3,8 @@ angular
   .config(function (calendarConfig) {
     calendarConfig.dayView.hasAttendee = true;
     calendarConfig.dayView.verticalView = false;
-    calendarConfig.dayView.attendeeBlockHeight = 60;
-    calendarConfig.dayView.eventHeight = 50;
+    calendarConfig.dayView.attendeeBlockHeight = 85;
+    calendarConfig.dayView.eventHeight = 80;
 
   })
   .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig) {
