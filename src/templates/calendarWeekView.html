@@ -1,5 +1,5 @@
 <div class="cal-week-box" ng-class="{'cal-day-box': vm.showTimes}">
-  <div class="cal-row-fluid cal-row-head">
+  <div class="cal-row-fluid cal-row-head day-list">
 
     <div
       class="cal-cell1"
@@ -14,12 +14,10 @@
       on-drop="vm.eventDropped(dropData.event, day.date)">
 
       <span ng-bind="day.weekDayLabel"></span>
-      <br>
+      <!--<br>-->
       <small>
         <span
-          data-cal-date
-          ng-click="vm.calendarCtrl.dateClicked(day.date)"
-          class="pointer"
+          data-cal-date 
           ng-bind="day.dayLabel">
         </span>
       </small>

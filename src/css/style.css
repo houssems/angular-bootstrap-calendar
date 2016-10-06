@@ -133,6 +133,12 @@ body {
 .day-list {
     background-color: #ececec;
 }
+.day-list .cal-day-today {
+    background-color: #ececec;
+}
+.day-list:hover {
+    background-color: #ececec !important;
+}
 
 
 
