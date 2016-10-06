@@ -130,7 +130,9 @@ body {
 .cal-week-box .cal-day-hour-part .cal-day-hour-part-spacer {
     width: 100% !important;
 }
-
+.day-list {
+    background-color: #ececec;
+}
 
 
 
