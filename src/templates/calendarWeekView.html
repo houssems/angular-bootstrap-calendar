@@ -24,7 +24,7 @@
 
     </div>
 
-  </div>
+  </div><!--.day-list-->
 
   <div class="cal-day-panel clearfix" ng-style="{height: vm.showTimes ? (vm.dayViewHeight + 'px') : 'auto'}">
 
@@ -42,10 +42,10 @@
       ng-if="vm.showTimes">
     </mwl-calendar-hour-list>
 
-    <div class="row" ng-repeat="row in vm.view.eventRows track by $index">
+    <div class="row WeekRdvItem" ng-repeat="row in vm.view.eventRows track by $index">
       <div class="col-xs-12">
         <div class="cal-row-fluid">
-          <div
+          <div class="WeekRdv" 
             ng-repeat="eventRow in row.row track by eventRow.event.$id"
             ng-class="'cal-cell' + (vm.showTimes ? 1 : eventRow.span) + (vm.showTimes ? '' : ' cal-offset' + eventRow.offset)"
             ng-style="{

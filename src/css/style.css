@@ -140,7 +140,6 @@ body {
 }
 .day-list {
     background-color: #ececec;
-    
 }
 .day-list .cal-day-today {
     background-color: #ececec;
@@ -166,6 +165,13 @@ body {
     background-repeat: repeat-x;
     background-position: center 10px;
     background-size: 1px auto;
+}
+.cal-week-box .WeekRdvItem .WeekRdv .day-highlight {
+    background-color: #fff;
+    padding: 14px 18px !important;
+    height: 100%;
+    border: 0;
+    border-left: 5px solid #f7941e;
 }
 
 
