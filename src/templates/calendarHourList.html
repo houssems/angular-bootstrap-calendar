@@ -1,8 +1,8 @@
-<div class="cal-day-panel-hour clearfix" ng-if="vm.horizontalView">
+<div class="cal-day-panel-hour clearfix" ng-if="vm.horizontalView" ng-style="{width: vm.dayTimeWidth + 'px'}">
 
 
 
-  <div class="hourGrid" ng-repeat="hour in vm.hourGrid track by $index">
+  <div class="hourGrid" ng-repeat="hour in vm.hourGrid track by $index" ng-style="{width: vm.hourWidth + 'px'}">
     <div    class="SingleHour"
             ng-repeat="segment in hour.segments track by $index"
             mwl-droppable

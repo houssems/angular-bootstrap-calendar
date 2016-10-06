@@ -10,6 +10,11 @@ angular
 
     vm.horizontalView = $attrs.view && $attrs.view === 'day' && !calendarConfig.dayView.verticalView;
 
+    if (vm.horizontalView) {
+      vm.dayTimeWidth = calendarHelper.getDayWidth(vm.dayViewStart, vm.dayViewEnd);
+      vm.hourWidth = calendarConfig.dayView.hourWidth;
+    }
+
     function updateDays() {
 
       vm.dayViewSplit = parseInt(vm.dayViewSplit);
