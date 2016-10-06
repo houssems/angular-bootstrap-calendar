@@ -121,11 +121,18 @@ body {
     color: #292b37;
     font-family: 'ProximaNovaSoft-Bold';
     font-size: 15px;
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cal-week-box .cal-day-panel-hour {
+   /* width: 50px !important;*/
 }
 .cal-week-box .cal-day-hour-part {
     width: 50px !important;
-    background: red !important;
     border-bottom: 0 !important;
+    background-color: #ececec !important;
 }
 .cal-week-box .cal-day-hour-part .cal-day-hour-part-spacer {
     width: 100% !important;
@@ -139,17 +146,19 @@ body {
 .day-list:hover {
     background-color: #ececec !important;
 }
-
-
-
-
-
-
-
-
-
-
-
+.day-list .cal-cell1 {
+    padding: 20px 0 !important;
+}
+.day-list .weekDayLabel,
+.day-list .data-cal-date,
+.day-list .cal-day-today .data-cal-date,
+.day-list .cal-day-weekend .data-cal-date {
+    color: #696a70;
+    font-size: 15px;
+}
+.cal-day-box .cal-day-hour:nth-child(odd) {
+    background-color: #ececec !important;
+}
 
 
 

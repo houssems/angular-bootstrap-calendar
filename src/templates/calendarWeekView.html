@@ -13,10 +13,10 @@
       mwl-droppable
       on-drop="vm.eventDropped(dropData.event, day.date)">
 
-      <span ng-bind="day.weekDayLabel"></span>
+      <span  class="weekDayLabel" ng-bind="day.weekDayLabel"></span>
       <!--<br>-->
       <small>
-        <span
+        <span class="data-cal-date" 
           data-cal-date 
           ng-bind="day.dayLabel">
         </span>
