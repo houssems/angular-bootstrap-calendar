@@ -128,6 +128,7 @@ body {
 }
 .cal-week-box .cal-day-panel-hour {
    /* width: 50px !important;*/
+    padding: 25px 0 0;
 }
 .cal-week-box .cal-day-hour-part {
     width: 50px !important;
@@ -139,6 +140,7 @@ body {
 }
 .day-list {
     background-color: #ececec;
+    
 }
 .day-list .cal-day-today {
     background-color: #ececec;
@@ -159,7 +161,12 @@ body {
 .cal-day-box .cal-day-hour:nth-child(odd) {
     background-color: #ececec !important;
 }
-
+.cal-week-box .cal-day-hour {
+    background-image: url('../img/BgTwoPixel.png');
+    background-repeat: repeat-x;
+    background-position: center 10px;
+    background-size: 1px auto;
+}
 
 
 
