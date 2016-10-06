@@ -2,7 +2,7 @@
   <div class="cal-day-panel clearfix">
     <div class="row">
       <div class="col-xs-12">
-        <div class="cal-row-fluid">
+        <div class="cal-row-fluid day-list">
           <div
             class="cal-cell-6 day-highlight"
             ng-style="{backgroundColor: event.color.secondary}"
@@ -20,7 +20,7 @@
               ng-bind-html="vm.calendarEventTitle.dayView(event) | calendarTrustAsHtml">
             </a>
           </div>
-        </div>
+        </div><!--.cal-row-fluid-->
       </div>
     </div>
   </div>
