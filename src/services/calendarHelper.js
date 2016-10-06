@@ -251,14 +251,18 @@ angular
     }
 
 
-    function getEventsWidth(events, dayViewStart) {
+    function getEventsWidth(events, dayViewStart, dayViewEnd) {
 
       var minuteWidth = calendarConfig.dayView.hourWidth / 60;
-
       var divCenter = calendarConfig.dayView.hourWidth / 2;
+
       return events.map(function (event) {
 
         var startDay = moment(dayViewStart || '00:00', 'HH:mm');
+        var dayInMinutes = moment(dayViewEnd || '23:59', 'HH:mm').diff(startDay, 'minutes');
+
+
+
         var startEvent = moment(event.event.startsAt, 'HH:mm');
         var endEvent = moment(event.event.endsAt, 'HH:mm');
 
@@ -269,7 +273,7 @@ angular
 
         var width = endEvent.diff(startEvent, 'minutes');
 
-        if (diff + width > 1440) width = 1440 - diff;
+        if (diff + width > dayInMinutes) width = dayInMinutes - diff;
 
         event.width = (width * minuteWidth);
 
@@ -277,6 +281,15 @@ angular
         // console.log(event.left);
         return event;
       });
+    }
+
+    function getDayWidth(dayViewStart, dayViewEnd) {
+      var startDay = moment(dayViewStart || '00:00', 'HH:mm');
+      var dayInHours = moment(dayViewEnd || '23:59', 'HH:mm').diff(startDay, 'hours') + 1;
+
+      var hour = calendarConfig.dayView.hourWidth;
+      return dayInHours * hour;
+
     }
 
     function getAttendeeList(events) {
@@ -385,7 +398,8 @@ angular
       eventIsInPeriod: eventIsInPeriod, //expose for testing only
       getAttendeeList: getAttendeeList,
       getEventsWidth: getEventsWidth,
-      getTodayPosition: getTodayPosition
+      getTodayPosition: getTodayPosition,
+      getDayWidth: getDayWidth
     };
 
   });

@@ -38,6 +38,7 @@ angular
         vm.attendees = calendarHelper.getAttendeeList(view.events);
         vm.nonAllDayEvents = calendarHelper.getEventsWidth(view.events, vm.dayViewStart, vm.dayViewEnd);
         vm.todayTimePosition = calendarHelper.getTodayPosition(vm.viewDate, vm.dayViewStart);
+        vm.dayTimeWidth = calendarHelper.getDayWidth(vm.dayViewStart, vm.dayViewEnd);
       }
 
 
@@ -53,8 +54,6 @@ angular
     ], refreshView);
 
     vm.eventDragComplete = function(event, minuteChunksMoved) {
-
-      console.log(minuteChunksMoved);
       var minutesDiff = minuteChunksMoved * vm.dayViewSplit;
       var newStart = moment(event.startsAt).add(minutesDiff, 'minutes');
       var newEnd = moment(event.endsAt).add(minutesDiff, 'minutes');
@@ -68,8 +67,6 @@ angular
     };
 
     vm.eventDragged = function(event, minuteChunksMoved) {
-
-      console.log(minuteChunksMoved);
       var minutesDiff = minuteChunksMoved * vm.dayViewSplit;
       event.tempStartsAt = moment(event.startsAt).add(minutesDiff, 'minutes').toDate();
     };
@@ -93,7 +90,6 @@ angular
     };
 
     vm.eventResized = function(event, edge, minuteChunksMoved) {
-      console.log(minuteChunksMoved);
       var minutesDiff = minuteChunksMoved * vm.dayViewSplit;
       if (edge === 'start') {
         event.tempStartsAt = moment(event.startsAt).add(minutesDiff, 'minutes').toDate();

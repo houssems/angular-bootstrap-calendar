@@ -88,10 +88,10 @@
     </div>
 
     <!--class="user-list"-->
-    <div ng-if="!vm.dayView.verticalView">
+    <div ng-if="!vm.dayView.verticalView" >
 
       <!--view events by attendee-->
-      <div class="day-view-item"  ng-if="vm.dayView.hasAttendee">
+      <div class="day-view-item"  ng-if="vm.dayView.hasAttendee" ng-style="{width: vm.dayTimeWidth + 'px'}">
 
         <div class="user-list">
             <div class="userItem"  ng-repeat="attendee in vm.attendees track by $index">
