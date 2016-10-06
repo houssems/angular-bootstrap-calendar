@@ -28,6 +28,7 @@
 
 <div class="cal-day-box">
   <span class="detector-hours" ng-style="{left: vm.todayTimePosition + 'px'}" ng-if="!vm.dayView.verticalView && vm.dayView.showNowBar && vm.todayTimePosition > -1"></span>
+  
   <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
 
     <mwl-calendar-hour-list

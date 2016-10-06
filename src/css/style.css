@@ -77,6 +77,15 @@ body {
     left: 50%;
     z-index: 100;
 }
+.detector-hours-two {
+    width: 100%;
+    height: 1px;
+    background-color: #f22d48;
+    position: absolute;
+    left: 0;
+    /* top: 50%; */
+    z-index: 100;
+}
 .day-view-item {
     margin: 40px 0 0;
     padding: 20px 0 0;
@@ -113,8 +122,14 @@ body {
     font-family: 'ProximaNovaSoft-Bold';
     font-size: 15px;
 }
-
-
+.cal-week-box .cal-day-hour-part {
+    width: 50px !important;
+    background: red !important;
+    border-bottom: 0 !important;
+}
+.cal-week-box .cal-day-hour-part .cal-day-hour-part-spacer {
+    width: 100% !important;
+}
 
 
 
