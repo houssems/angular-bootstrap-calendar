@@ -127,8 +127,8 @@ body {
     text-overflow: ellipsis;
 }
 .cal-week-box .cal-day-panel-hour {
-   /* width: 50px !important;*/
-    padding: 25px 0 0;
+   /* width: 50px !important;
+    padding: 25px 0 0;*/
 }
 .cal-week-box .cal-day-hour-part {
     width: 50px !important;
@@ -157,23 +157,28 @@ body {
     color: #696a70;
     font-size: 15px;
 }
+.day-list .data-cal-date:hover {
+    opacity: initial;
+}
 .cal-day-box .cal-day-hour:nth-child(odd) {
     background-color: #ececec !important;
 }
 .cal-week-box .cal-day-hour {
     background-image: url('../img/BgTwoPixel.png');
     background-repeat: repeat-x;
-    background-position: center 10px;
+    background-position: center 0px;
     background-size: 1px auto;
 }
 .cal-week-box .WeekRdvItem .WeekRdv .day-highlight {
     background-color: #fff;
-    padding: 14px 18px !important;
+    /*padding: 14px 18px !important;*/
     height: 100%;
     border: 0;
     border-left: 5px solid #f7941e;
 }
-
+.cal-day-box .cal-day-hour-part .cal-day-hour-part-time {
+    margin: -10px 0 0;
+}
 
 
 
