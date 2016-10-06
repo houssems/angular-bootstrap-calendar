@@ -251,14 +251,14 @@ angular
     }
 
 
-    function getEventsWidth(events) {
+    function getEventsWidth(events, dayViewStart) {
 
       var minuteWidth = calendarConfig.dayView.hourWidth / 60;
 
       var divCenter = calendarConfig.dayView.hourWidth / 2;
       return events.map(function (event) {
 
-        var startDay = moment('00:00', 'HH:mm');
+        var startDay = moment(dayViewStart || '00:00', 'HH:mm');
         var startEvent = moment(event.event.startsAt, 'HH:mm');
         var endEvent = moment(event.event.endsAt, 'HH:mm');
 
@@ -291,15 +291,24 @@ angular
       return results;
     }
 
-    function getTodayPosition(daySelected) {
+    function getTodayPosition(daySelected, dayViewStart, dayViewEnd) {
 
       if (moment().isSame(daySelected, 'day')) {
 
-        var minuteWidth = calendarConfig.dayView.hourWidth / 60,
-          divCenter = calendarConfig.dayView.hourWidth / 2,
-          diff = moment(daySelected).diff(moment().startOf('day'), 'minutes');
+        // get day time limit
+        var dayViewStartM = moment(dayViewStart || '00:00', 'HH:mm');
+        var dayViewEndM = moment(dayViewEnd || '23:59', 'HH:mm');
 
-        return diff * minuteWidth + divCenter;
+        // get minute width
+        var minuteWidth = calendarConfig.dayView.hourWidth / 60,
+          divCenter = calendarConfig.dayView.hourWidth / 2;
+
+        // get minutes between startOfDay and time selected
+        var diff = moment(daySelected).diff(dayViewStartM, 'minutes'),
+          checkEndDayLimit = moment(daySelected).isBefore(dayViewEndM, 'minutes');
+
+        if (diff > 0 && checkEndDayLimit)
+          return diff * minuteWidth + divCenter;
 
       }
 
