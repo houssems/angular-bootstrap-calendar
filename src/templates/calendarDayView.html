@@ -27,10 +27,12 @@
 </div>
 
 <div class="cal-day-box">
-  <span class="detector-hours" ng-style="{left: vm.todayTimePosition + 'px'}" ng-if="!vm.dayView.verticalView && vm.dayView.showNowBar && vm.todayTimePosition > -1"></span>
-  
-  <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
 
+  <!--now time bar-->
+  <span class="detector-hours" ng-style="{left: vm.todayTimePosition + 'px'}" ng-if="!vm.dayView.verticalView && vm.dayView.showNowBar && vm.todayTimePosition > -1"></span>
+
+
+  <div class="cal-day-panel clearfix" ng-style="{height: (vm.dayView.verticalView) ? vm.dayViewHeight + 'px' : 'auto', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
     <mwl-calendar-hour-list
       view="day"
       day-view-start="vm.dayViewStart"
@@ -116,15 +118,16 @@
                on-resize="vm.eventResized(dayEvent.event, edge, x / 30)"
                on-resize-end="vm.eventResizeComplete(dayEvent.event, edge, x / 30)"
                ng-class="dayEvent.event.cssClass"
+               ng-click="vm.onEventClick({calendarEvent: dayEvent.event})"
                ng-style="{
-               left: dayEvent.left + 'px',
-               position: 'absolute',
-               width: dayEvent.width + 'px',
-               height: vm.dayView.eventHeight + 'px',
-               float: 'left',
-               backgroundColor: dayEvent.event.color.secondary,
-               borderColor: dayEvent.event.color.primary
-            }">
+                 left: dayEvent.left + 'px',
+                 position: 'absolute',
+                 width: dayEvent.width + 'px',
+                 height: vm.dayView.eventHeight + 'px',
+                 float: 'left',
+                 backgroundColor: dayEvent.event.color.secondary,
+                 borderColor: dayEvent.event.color.primary
+              }">
 
             <div class="phoneEvent">
                 06 21 25 54 58
