@@ -128,11 +128,11 @@
                  borderColor: dayEvent.event.color.primary
               }">
 
-            <div class="phoneEvent" ng-bind="dayEvent.event.phoneNumber" ng-if="dayEvent.event.phoneNumber"></div>
+            <div ng-click="vm.onEventClick({calendarEvent: dayEvent.event})" style="width: 100%; height: 100%;">
+              <div class="phoneEvent" ng-bind="dayEvent.event.phoneNumber" ng-if="dayEvent.event.phoneNumber"></div>
+              <div class="TextEvent" ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></div>
+            </div>
 
-            <div class="TextEvent"
-                 ng-click="vm.onEventClick({calendarEvent: dayEvent.event})"
-                 ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></div>
 
           </div><!--.dayEvent-->
 
