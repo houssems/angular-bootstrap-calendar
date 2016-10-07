@@ -304,6 +304,38 @@ angular
       return results;
     }
 
+    function getTodayWeekPosition(dayViewSplit, viewDate, dayViewStart, dayViewEnd) {
+
+      console.log(dayViewSplit, viewDate, dayViewStart)
+
+      if (moment().isSame(viewDate, 'day')) {
+
+        // get day time limit
+        var dayViewStartM = moment(dayViewStart || '00:00', 'HH:mm');
+        var dayViewEndM = moment(dayViewEnd || '23:59', 'HH:mm');
+
+        // get minute width
+        var minuteWidth = calendarConfig.dayView.hourWidth / 60,
+          divCenter = calendarConfig.dayView.hourWidth / 2;
+
+        var numberOfDivs = 60 / dayViewSplit,
+          blockHeight = numberOfDivs * 30; // 30px
+
+
+        var oneMinute = blockHeight / 60;
+
+        // get minutes between startOfDay and time selected
+        var diff = moment(viewDate).diff(dayViewStartM, 'minutes'),
+          checkEndDayLimit = moment(viewDate).isBefore(dayViewEndM, 'minutes');
+
+        if (diff > 0 && checkEndDayLimit)
+          return diff * oneMinute;
+
+      }
+
+      return -1;
+    }
+
     function getTodayPosition(daySelected, dayViewStart, dayViewEnd) {
 
       if (moment().isSame(daySelected, 'day')) {
@@ -399,6 +431,7 @@ angular
       getAttendeeList: getAttendeeList,
       getEventsWidth: getEventsWidth,
       getTodayPosition: getTodayPosition,
+      getTodayWeekPosition: getTodayWeekPosition,
       getDayWidth: getDayWidth
     };
 

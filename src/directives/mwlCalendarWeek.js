@@ -26,6 +26,7 @@ angular
           vm.dayViewEnd,
           vm.dayViewSplit
         );
+
       } else {
         vm.view = calendarHelper.getWeekView(vm.events, vm.viewDate);
       }
