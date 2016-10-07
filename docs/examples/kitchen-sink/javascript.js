@@ -1,6 +1,8 @@
 angular
   .module('mwl.calendar.docs') //you will need to declare your module with the dependencies ['mwl.calendar', 'ui.bootstrap', 'ngAnimate']
   .config(function (calendarConfig) {
+
+    calendarConfig.dateFormatter = 'moment';
     calendarConfig.dayView.hasAttendee = true;
     calendarConfig.dayView.verticalView = false;
     calendarConfig.dayView.attendeeBlockHeight = 85;
@@ -30,6 +32,7 @@ angular
     vm.events = [
       {
         title: 'Jule Vilard',
+        phoneNumber: '06 10 10 11 19',
         color: {primary: '#88c75a'},
         startsAt: moment().startOf('day').hour(1).minute(20).toDate(),
         endsAt: moment().startOf('day').hour(2).minute(40).toDate(),
@@ -40,6 +43,7 @@ angular
         // cssClass: 'bgOne'
       }, {
         title: 'Lucienne Dumond',
+        phoneNumber: '06 10 10 11 19',
         color: {primary: '#736ae4'},
         startsAt: moment().startOf('day').hour(3).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
@@ -50,6 +54,7 @@ angular
         // cssClass: 'bgTwo'
       }, {
         title: 'Louis Renaud',
+        phoneNumber: '06 10 10 11 19',
         color: {primary: '#f7941e'},
         startsAt: moment().startOf('day').hour(4).toDate(),
         endsAt: moment().startOf('day').hour(5).minute(26).toDate(),
@@ -61,6 +66,8 @@ angular
         // cssClass: 'bgthree'
       }
     ];
+
+    console.log(moment().startOf('day').hour(4).toDate());
 
     vm.cellIsOpen = true;
 

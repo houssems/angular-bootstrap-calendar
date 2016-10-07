@@ -110,15 +110,14 @@
                ng-if="attendee === dayEvent.event.eventAssigned"
                mwl-draggable="dayEvent.event.draggable === true"
                axis="'x'"
-               snap-grid="{x: vm.dayViewEventChunkSize || 45, y: vm.dayView.eventHeight}"
-               on-drag="vm.eventDragged(dayEvent.event, x)"
-               on-drag-end="vm.eventDragComplete(dayEvent.event, x)"
+               snap-grid="{x: vm.dayViewEventChunkSize || (vm.dayView.hourWidth / 2), y: vm.dayView.eventHeight}"
+               on-drag="vm.eventDragged(dayEvent.event, x / (vm.dayView.hourWidth / 2))"
+               on-drag-end="vm.eventDragComplete(dayEvent.event, x / (vm.dayView.hourWidth / 2))"
                mwl-resizable="dayEvent.event.resizable === true && dayEvent.event.endsAt"
                resize-edges="{left: true, right: true}"
-               on-resize="vm.eventResized(dayEvent.event, edge, x / 30)"
-               on-resize-end="vm.eventResizeComplete(dayEvent.event, edge, x / 30)"
+               on-resize="vm.eventResized(dayEvent.event, edge, x / (vm.dayView.hourWidth / 2))"
+               on-resize-end="vm.eventResizeComplete(dayEvent.event, edge, x / (vm.dayView.hourWidth / 2))"
                ng-class="dayEvent.event.cssClass"
-               ng-click="vm.onEventClick({calendarEvent: dayEvent.event})"
                ng-style="{
                  left: dayEvent.left + 'px',
                  position: 'absolute',
@@ -129,11 +128,11 @@
                  borderColor: dayEvent.event.color.primary
               }">
 
-            <div class="phoneEvent">
-                06 21 25 54 58
-            </div>
-            <div class="TextEvent" ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml">
-            </div>
+            <div class="phoneEvent" ng-bind="dayEvent.event.phoneNumber" ng-if="dayEvent.event.phoneNumber"></div>
+
+            <div class="TextEvent"
+                 ng-click="vm.onEventClick({calendarEvent: dayEvent.event})"
+                 ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></div>
 
           </div><!--.dayEvent-->
 

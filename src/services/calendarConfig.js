@@ -24,10 +24,10 @@ angular
       },
       moment: {
         date: {
-          hour: 'ha',
+          hour: 'HH:mm',
           day: 'D MMM',
           month: 'MMMM',
-          weekDay: 'dddd',
+          weekDay: 'ddd.',
           time: 'HH:mm',
           datetime: 'MMM D, h:mm a'
         },
