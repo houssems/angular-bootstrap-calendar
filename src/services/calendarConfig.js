@@ -8,7 +8,7 @@ angular
     allDateFormats: {
       angular: {
         date: {
-          hour: 'ha',
+          hour: 'HH:mm',
           day: 'd MMM',
           month: 'MMMM',
           weekDay: 'EEEE',
@@ -24,10 +24,10 @@ angular
       },
       moment: {
         date: {
-          hour: 'ha',
+          hour: 'HH:mm',
           day: 'D MMM',
           month: 'MMMM',
-          weekDay: 'dddd',
+          weekDay: 'ddd',
           time: 'HH:mm',
           datetime: 'MMM D, h:mm a'
         },
@@ -77,5 +77,17 @@ angular
         primary: '#006400',
         secondary: '#caffca'
       }
+    },
+    dayView: {
+      verticalView: true,
+      hasAttendee: false,
+      eventHeight: 50,
+      attendeeBlockHeight: 70,
+      hourWidth: 90,
+      showNowBar: false
+    },
+    weekView: {
+      showNowBar: false,
+      uniqueEvents: false
     }
   });

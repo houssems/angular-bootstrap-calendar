@@ -4,9 +4,11 @@ var angular = require('angular');
 
 angular
   .module('mwl.calendar')
-  .controller('MwlCalendarDayCtrl', function($scope, moment, calendarHelper, calendarEventTitle) {
+  .controller('MwlCalendarDayCtrl', function($scope, moment, calendarHelper, calendarEventTitle, calendarConfig) {
 
     var vm = this;
+
+    vm.dayView = calendarConfig.dayView;
 
     vm.calendarEventTitle = calendarEventTitle;
 
@@ -30,6 +32,12 @@ angular
       vm.nonAllDayEvents = view.events;
       vm.viewWidth = view.width + 62;
 
+      if (vm.dayView.hasAttendee) {
+        vm.attendees = calendarHelper.getAttendeeList(view.events);
+        vm.nonAllDayEvents = calendarHelper.getEventsWidth(view.events, vm.dayViewStart, vm.dayViewEnd);
+        vm.todayTimePosition = calendarHelper.getTodayPosition(vm.viewDate, vm.dayViewStart);
+        vm.dayTimeWidth = calendarHelper.getDayWidth(vm.dayViewStart, vm.dayViewEnd);
+      }
     }
 
     $scope.$on('calendar.refreshView', refreshView);

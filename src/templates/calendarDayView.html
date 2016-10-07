@@ -20,16 +20,21 @@
               ng-bind-html="vm.calendarEventTitle.dayView(event) | calendarTrustAsHtml">
             </a>
           </div>
-        </div>
+        </div><!--.cal-row-fluid-->
       </div>
     </div>
   </div>
 </div>
 
 <div class="cal-day-box">
-  <div class="cal-day-panel clearfix" ng-style="{height: vm.dayViewHeight + 'px', minWidth: vm.viewWidth + 'px'}">
 
+  <!--now time bar-->
+  <span class="detector-hours" ng-style="{left: vm.todayTimePosition + 'px'}" ng-if="!vm.dayView.verticalView && vm.dayView.showNowBar && vm.todayTimePosition > -1"></span>
+
+
+  <div class="cal-day-panel clearfix" ng-style="{height: (vm.dayView.verticalView) ? vm.dayViewHeight + 'px' : 'auto', minWidth: vm.viewWidth + 'px', 'padding-left': 0}">
     <mwl-calendar-hour-list
+      view="day"
       day-view-start="vm.dayViewStart"
       day-view-end="vm.dayViewEnd"
       day-view-split="vm.dayViewSplit"
@@ -42,7 +47,7 @@
       cell-modifier="vm.cellModifier">
     </mwl-calendar-hour-list>
 
-    <div
+    <div ng-if="vm.dayView.verticalView"
       class="pull-left day-event day-highlight"
       ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
       ng-class="dayEvent.event.cssClass"
@@ -81,6 +86,60 @@
       </a>
 
     </div>
+
+    <!--class="user-list"-->
+    <div ng-if="!vm.dayView.verticalView" >
+
+      <!--view events by attendee-->
+      <div class="day-view-item"  ng-if="vm.dayView.hasAttendee" ng-style="{width: vm.dayTimeWidth + 'px'}">
+
+        <div class="user-list">
+            <div class="userItem"  ng-repeat="attendee in vm.attendees track by $index">
+                 <a href="#" >
+                  {{attendee}}
+                </a>
+            </div>
+        </div><!--.user-list-->
+
+        <!--attendee events-->
+        <div class="day-view-style" ng-repeat="attendee in vm.attendees track by $index"
+             ng-style=" {height: vm.dayView.attendeeBlockHeight + 'px'}">
+
+
+          <div class="dayEvent " ng-repeat="dayEvent in vm.nonAllDayEvents track by dayEvent.event.$id"
+               ng-if="attendee === dayEvent.event.eventAssigned"
+               mwl-draggable="dayEvent.event.draggable === true"
+               axis="'x'"
+               snap-grid="{x: vm.dayViewEventChunkSize || (vm.dayView.hourWidth / 2), y: vm.dayView.eventHeight}"
+               on-drag="vm.eventDragged(dayEvent.event, x / (vm.dayView.hourWidth / 2))"
+               on-drag-end="vm.eventDragComplete(dayEvent.event, x / (vm.dayView.hourWidth / 2))"
+               mwl-resizable="dayEvent.event.resizable === true && dayEvent.event.endsAt"
+               resize-edges="{left: true, right: true}"
+               on-resize="vm.eventResized(dayEvent.event, edge, x / (vm.dayView.hourWidth / 2))"
+               on-resize-end="vm.eventResizeComplete(dayEvent.event, edge, x / (vm.dayView.hourWidth / 2))"
+               ng-class="dayEvent.event.cssClass"
+               ng-style="{
+                 left: dayEvent.left + 'px',
+                 position: 'absolute',
+                 width: dayEvent.width + 'px',
+                 height: vm.dayView.eventHeight + 'px',
+                 float: 'left',
+                 backgroundColor: dayEvent.event.color.secondary,
+                 borderColor: dayEvent.event.color.primary
+              }">
+
+            <div ng-click="vm.onEventClick({calendarEvent: dayEvent.event})" style="width: 100%; height: 100%;">
+              <div class="phoneEvent" ng-bind="dayEvent.event.phoneNumber" ng-if="dayEvent.event.phoneNumber"></div>
+              <div class="TextEvent" ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></div>
+            </div>
+
+
+          </div><!--.dayEvent-->
+
+        </div>
+
+      </div>
+    </div><!--.user-list-->
 
   </div>
 

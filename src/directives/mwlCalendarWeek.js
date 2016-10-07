@@ -10,6 +10,7 @@ angular
 
     vm.showTimes = calendarConfig.showTimesOnWeekView;
     vm.calendarEventTitle = calendarEventTitle;
+    vm.uniqueEvents = calendarConfig.weekView.uniqueEvents;
 
     $scope.$on('calendar.refreshView', function() {
       vm.dayViewSplit = vm.dayViewSplit || 30;
@@ -26,6 +27,7 @@ angular
           vm.dayViewEnd,
           vm.dayViewSplit
         );
+
       } else {
         vm.view = calendarHelper.getWeekView(vm.events, vm.viewDate);
       }

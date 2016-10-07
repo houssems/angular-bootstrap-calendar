@@ -1,11 +1,24 @@
 angular
   .module('mwl.calendar.docs') //you will need to declare your module with the dependencies ['mwl.calendar', 'ui.bootstrap', 'ngAnimate']
-  .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig) {
+  .config(function (calendarConfig) {
+
+    calendarConfig.dateFormatter = 'moment';
+    calendarConfig.dayView.hasAttendee = true;
+    calendarConfig.dayView.verticalView = false;
+    calendarConfig.dayView.attendeeBlockHeight = 85;
+    calendarConfig.dayView.eventHeight = 80;
+    calendarConfig.dayView.showNowBar = true;
+    calendarConfig.weekView.showNowBar = true;
+    calendarConfig.weekView.uniqueEvents = true;
+    calendarConfig.showTimesOnWeekView = true;
+
+  })
+  .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig, $ocLazyLoad, $window) {
 
     var vm = this;
 
     //These variables MUST be set as a minimum for the calendar to work
-    vm.calendarView = 'month';
+    vm.calendarView = 'day';
     vm.viewDate = new Date();
     var actions = [{
       label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
@@ -18,34 +31,56 @@ angular
         alert.show('Deleted', args.calendarEvent);
       }
     }];
+
+    $window.moment = $window.moment || moment;
+    $ocLazyLoad.load('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js').then(function() {
+      moment.locale('fr', {
+        week: {
+          dow: 1 // Monday is the first day of the week
+        }
+      });
+      moment.locale('fr'); // change the locale to french
+    });
+
     vm.events = [
       {
-        title: 'An event',
-        color: calendarConfig.colorTypes.warning,
-        startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-        endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
+        title: 'Jule Vilard',
+        phoneNumber: '06 10 10 11 19',
+        color: {primary: '#88c75a'},
+        startsAt: moment().startOf('day').hour(4).minute(0).toDate(),
+        endsAt: moment().startOf('day').hour(5).minute(15).toDate(),
         draggable: true,
         resizable: true,
-        actions: actions
+        actions: actions,
+        eventAssigned: 'Ghassen',
+        // cssClass: 'bgOne'
       }, {
-        title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
-        color: calendarConfig.colorTypes.info,
-        startsAt: moment().subtract(1, 'day').toDate(),
-        endsAt: moment().add(5, 'days').toDate(),
+        title: 'Lucienne Dumond',
+        phoneNumber: '06 10 10 11 19',
+        color: {primary: '#736ae4'},
+        startsAt: moment().startOf('day').hour(6).toDate(),
+        endsAt: moment().startOf('day').hour(7).minute(26).toDate(),
         draggable: true,
         resizable: true,
-        actions: actions
+        actions: actions,
+        eventAssigned: 'Ghassen',
+        // cssClass: 'bgTwo'
       }, {
-        title: 'This is a really long event title that occurs on every year',
-        color: calendarConfig.colorTypes.important,
-        startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-        endsAt: moment().startOf('day').add(19, 'hours').toDate(),
+        title: 'Louis Renaud',
+        phoneNumber: '06 10 10 11 19',
+        color: {primary: '#f7941e'},
+        startsAt: moment().startOf('day').hour(8).minute(15).toDate(),
+        endsAt: moment().startOf('day').hour(10).minute(10).toDate(),
         recursOn: 'year',
         draggable: true,
         resizable: true,
-        actions: actions
+        actions: actions,
+        eventAssigned: 'Houssem',
+        // cssClass: 'bgthree'
       }
     ];
+
+    console.log(moment().startOf('day').hour(4).toDate());
 
     vm.cellIsOpen = true;
 

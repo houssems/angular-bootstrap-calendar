@@ -248,6 +248,107 @@ angular
 
     }
 
+    function getEventsWidth(events, dayViewStart, dayViewEnd) {
+
+      var minuteWidth = calendarConfig.dayView.hourWidth / 60;
+      var divCenter = calendarConfig.dayView.hourWidth / 2;
+
+      return events.map(function(event) {
+
+        var startDay = moment(dayViewStart || '00:00', 'HH:mm');
+        var dayInMinutes = moment(dayViewEnd || '23:59', 'HH:mm').diff(startDay, 'minutes');
+
+        var startEvent = moment(event.event.startsAt, 'HH:mm');
+        var endEvent = moment(event.event.endsAt, 'HH:mm');
+
+        var diff = startEvent.diff(startDay, 'minutes');
+
+        event.left = (diff <= 0) ? 0 : (diff * minuteWidth + divCenter);
+
+        var width = endEvent.diff(startEvent, 'minutes');
+
+        if (diff + width > dayInMinutes) {
+          width = dayInMinutes - diff;
+        }
+
+        event.width = (width * minuteWidth);
+
+        return event;
+      });
+    }
+
+    function getDayWidth(dayViewStart, dayViewEnd) {
+      var startDay = moment(dayViewStart || '00:00', 'HH:mm');
+      var dayInHours = moment(dayViewEnd || '23:59', 'HH:mm').diff(startDay, 'hours') + 1;
+
+      var hour = calendarConfig.dayView.hourWidth;
+      return dayInHours * hour;
+
+    }
+
+    function getAttendeeList(events) {
+
+      var results = [];
+
+      events.forEach(function(event) {
+        if (results.indexOf(event.event.eventAssigned) === -1) {
+          results.push(event.event.eventAssigned);
+        }
+      });
+
+      return results;
+    }
+
+    function getTodayWeekPosition(dayViewSplit, viewDate, dayViewStart, dayViewEnd) {
+
+      if (moment().isSame(viewDate, 'day')) {
+
+        // get day time limit
+        var dayViewStartM = moment(dayViewStart || '00:00', 'HH:mm');
+        var dayViewEndM = moment(dayViewEnd || '23:59', 'HH:mm');
+
+        var numberOfDivs = 60 / dayViewSplit,
+          blockHeight = numberOfDivs * 30; // 30px
+
+        var oneMinute = blockHeight / 60;
+
+        // get minutes between startOfDay and time selected
+        var diff = moment(viewDate).diff(dayViewStartM, 'minutes'),
+          checkEndDayLimit = moment(viewDate).isBefore(dayViewEndM, 'minutes');
+
+        if (diff > 0 && checkEndDayLimit) {
+          return diff * oneMinute;
+        }
+
+      }
+
+      return -1;
+    }
+
+    function getTodayPosition(daySelected, dayViewStart, dayViewEnd) {
+
+      if (moment().isSame(daySelected, 'day')) {
+
+        // get day time limit
+        var dayViewStartM = moment(dayViewStart || '00:00', 'HH:mm');
+        var dayViewEndM = moment(dayViewEnd || '23:59', 'HH:mm');
+
+        // get minute width
+        var minuteWidth = calendarConfig.dayView.hourWidth / 60,
+          divCenter = calendarConfig.dayView.hourWidth / 2;
+
+        // get minutes between startOfDay and time selected
+        var diff = moment(daySelected).diff(dayViewStartM, 'minutes'),
+          checkEndDayLimit = moment(daySelected).isBefore(dayViewEndM, 'minutes');
+
+        if (diff > 0 && checkEndDayLimit) {
+          return diff * minuteWidth + divCenter;
+        }
+      }
+
+      return -1;
+    }
+
     function getWeekViewWithTimes(events, viewDate, dayViewStart, dayViewEnd, dayViewSplit) {
       var weekView = getWeekView(events, viewDate);
       var newEvents = [];
@@ -276,6 +377,7 @@ angular
           return {
             event: event,
             top: dayEvent.top,
+            height: dayEvent.height,
             offset: calendarUtils.getWeekViewEventOffset(
               {start: event.startsAt, end: event.endsAt},
               moment(viewDate).startOf('week')
@@ -315,7 +417,12 @@ angular
       adjustEndDateFromStartDiff: adjustEndDateFromStartDiff,
       formatDate: formatDate,
       loadTemplates: loadTemplates,
-      eventIsInPeriod: eventIsInPeriod //expose for testing only
+      eventIsInPeriod: eventIsInPeriod, //expose for testing only
+      getAttendeeList: getAttendeeList,
+      getEventsWidth: getEventsWidth,
+      getTodayPosition: getTodayPosition,
+      getTodayWeekPosition: getTodayWeekPosition,
+      getDayWidth: getDayWidth
     };
 
   });

@@ -5,11 +5,20 @@ var calendarUtils = require('calendar-utils');
 
 angular
   .module('mwl.calendar')
-  .controller('MwlCalendarHourListCtrl', function($scope, moment, calendarHelper, calendarConfig) {
+  .controller('MwlCalendarHourListCtrl', function($scope, moment, calendarHelper, calendarConfig, $attrs) {
     var vm = this;
 
+    vm.horizontalView = $attrs.view && $attrs.view === 'day' && !calendarConfig.dayView.verticalView;
+
+    if (vm.horizontalView) {
+      vm.dayTimeWidth = calendarHelper.getDayWidth(vm.dayViewStart, vm.dayViewEnd);
+      vm.hourWidth = calendarConfig.dayView.hourWidth;
+    }
+
+    vm.todayTimePosition = calendarHelper.getTodayWeekPosition(vm.dayViewSplit, vm.viewDate, vm.dayViewStart, vm.dayViewEnd);
     function updateDays() {
 
+      vm.showWeekTimeisNow = $attrs.view && $attrs.view === 'week' && calendarConfig.weekView.showNowBar && moment().isSame(vm.viewDate, 'day');
       vm.dayViewSplit = parseInt(vm.dayViewSplit);
       var dayStart = (vm.dayViewStart || '00:00').split(':');
       var dayEnd = (vm.dayViewEnd || '23:59').split(':');
@@ -123,6 +132,7 @@ angular
       controller: 'MwlCalendarHourListCtrl as vm',
       scope: {
         viewDate: '=',
+        view: '@',
         dayViewStart: '=',
         dayViewEnd: '=',
         dayViewSplit: '=',

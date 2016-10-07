@@ -1,0 +1,35 @@
+/* ===================================== *\
+    @Project :      APOLOGIC_CALENDER 
+    @Author :       Proxym Group
+    @email :		contact@proxym-group.com
+    @link:          www.proxym-group.com
+    @file :		    font.css
+    @copyright :	(C) 2016, Proxym Group
+\* ===================================== */
+
+@charset "UTF-8";
+
+/* ProximaNovaSoft */
+
+@font-face {
+	font-family: 'ProximaNovaSoft-Regular';
+	src: url('fonts/ProximaNovaSoft-Regular.eot');
+	src: url('fonts/ProximaNovaSoft-Regular.eot?#iefix') format('embedded-opentype'),
+		url('fonts/ProximaNovaSoft-Regular.woff2') format('woff2'),
+		url('fonts/ProximaNovaSoft-Regular.woff') format('woff'),
+		url('fonts/ProximaNovaSoft-Regular.ttf') format('truetype'),
+		url('fonts/ProximaNovaSoft-Regular.svg#ProximaNovaSoft-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'ProximaNovaSoft-Bold';
+	src: url('fonts/ProximaNovaSoft-Bold.eot');
+	src: url('fonts/ProximaNovaSoft-Bold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/ProximaNovaSoft-Bold.woff2') format('woff2'),
+		url('fonts/ProximaNovaSoft-Bold.woff') format('woff'),
+		url('fonts/ProximaNovaSoft-Bold.ttf') format('truetype'),
+		url('fonts/ProximaNovaSoft-Bold.svg#ProximaNovaSoft-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}

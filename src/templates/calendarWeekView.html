@@ -1,5 +1,5 @@
 <div class="cal-week-box" ng-class="{'cal-day-box': vm.showTimes}">
-  <div class="cal-row-fluid cal-row-head">
+  <div class="cal-row-fluid cal-row-head day-list">
 
     <div
       class="cal-cell1"
@@ -13,24 +13,23 @@
       mwl-droppable
       on-drop="vm.eventDropped(dropData.event, day.date)">
 
-      <span ng-bind="day.weekDayLabel"></span>
-      <br>
+      <span  class="weekDayLabel" ng-bind="day.weekDayLabel"></span>
+      <!--<br>-->
       <small>
-        <span
+        <span class="data-cal-date"
           data-cal-date
-          ng-click="vm.calendarCtrl.dateClicked(day.date)"
-          class="pointer"
           ng-bind="day.dayLabel">
         </span>
       </small>
 
     </div>
 
-  </div>
+  </div><!--.day-list-->
 
   <div class="cal-day-panel clearfix" ng-style="{height: vm.showTimes ? (vm.dayViewHeight + 'px') : 'auto'}">
 
     <mwl-calendar-hour-list
+      view="week"
       day-view-start="vm.dayViewStart"
       day-view-end="vm.dayViewEnd"
       day-view-split="vm.dayViewSplit"
@@ -44,22 +43,26 @@
       ng-if="vm.showTimes">
     </mwl-calendar-hour-list>
 
-    <div class="row" ng-repeat="row in vm.view.eventRows track by $index">
+    <div class="row WeekRdvItem" ng-repeat="row in vm.view.eventRows track by $index">
       <div class="col-xs-12">
         <div class="cal-row-fluid">
-          <div
+          <div class="WeekRdv"
             ng-repeat="eventRow in row.row track by eventRow.event.$id"
             ng-class="'cal-cell' + (vm.showTimes ? 1 : eventRow.span) + (vm.showTimes ? '' : ' cal-offset' + eventRow.offset)"
             ng-style="{
               top: vm.showTimes ? ((eventRow.top) + 'px') : 'auto',
               position: vm.showTimes ? 'absolute' : 'inherit',
               width: vm.showTimes ? (vm.dayColumnDimensions.width + 'px') : '',
+              height: (vm.uniqueEvents) ? eventRow.height + 'px' : 'inherits',
+              'z-index': $index + 5,
               left: vm.showTimes ? (vm.dayColumnDimensions.width * eventRow.offset) + 15 + 'px' : ''
             }">
             <div
               class="day-highlight"
               ng-class="[eventRow.event.cssClass, !vm.showTimes && eventRow.startsBeforeWeek ? '' : 'border-left-rounded', !vm.showTimes && eventRow.endsAfterWeek ? '' : 'border-right-rounded']"
-              ng-style="{backgroundColor: eventRow.event.color.secondary}"
+              ng-style="{
+                backgroundColor: eventRow.event.color.secondary,
+                borderColor: eventRow.event.color.primary}"
               data-event-class
               mwl-draggable="eventRow.event.draggable === true"
               axis="vm.showTimes ? 'xy' : 'x'"
