@@ -27,7 +27,7 @@ angular
           hour: 'HH:mm',
           day: 'D MMM',
           month: 'MMMM',
-          weekDay: 'ddd.',
+          weekDay: 'ddd',
           time: 'HH:mm',
           datetime: 'MMM D, h:mm a'
         },
@@ -84,6 +84,9 @@ angular
       eventHeight: 50,
       attendeeBlockHeight: 70,
       hourWidth: 90,
+      showNowBar: false
+    },
+    weekView: {
       showNowBar: false
     }
   });

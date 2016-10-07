@@ -8,10 +8,11 @@ angular
     calendarConfig.dayView.attendeeBlockHeight = 85;
     calendarConfig.dayView.eventHeight = 80;
     calendarConfig.dayView.showNowBar = true;
+    calendarConfig.weekView.showNowBar = true;
     calendarConfig.showTimesOnWeekView = true;
 
   })
-  .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig) {
+  .controller('KitchenSinkCtrl', function(moment, alert, calendarConfig, $ocLazyLoad, $window) {
 
     var vm = this;
 
@@ -29,6 +30,17 @@ angular
         alert.show('Deleted', args.calendarEvent);
       }
     }];
+
+    $window.moment = $window.moment || moment;
+    $ocLazyLoad.load('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js').then(function() {
+      moment.locale('fr', {
+        week: {
+          dow: 1 // Monday is the first day of the week
+        }
+      });
+      moment.locale('fr'); // change the locale to french
+    });
+
     vm.events = [
       {
         title: 'Jule Vilard',

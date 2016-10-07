@@ -244,24 +244,19 @@ angular
         delete event.end;
       });
 
-      // console.log(view);
-
       return view;
 
     }
-
 
     function getEventsWidth(events, dayViewStart, dayViewEnd) {
 
       var minuteWidth = calendarConfig.dayView.hourWidth / 60;
       var divCenter = calendarConfig.dayView.hourWidth / 2;
 
-      return events.map(function (event) {
+      return events.map(function(event) {
 
         var startDay = moment(dayViewStart || '00:00', 'HH:mm');
         var dayInMinutes = moment(dayViewEnd || '23:59', 'HH:mm').diff(startDay, 'minutes');
-
-
 
         var startEvent = moment(event.event.startsAt, 'HH:mm');
         var endEvent = moment(event.event.endsAt, 'HH:mm');
@@ -270,15 +265,14 @@ angular
 
         event.left = (diff <= 0) ? 0 : (diff * minuteWidth + divCenter);
 
-
         var width = endEvent.diff(startEvent, 'minutes');
 
-        if (diff + width > dayInMinutes) width = dayInMinutes - diff;
+        if (diff + width > dayInMinutes) {
+          width = dayInMinutes - diff;
+        }
 
         event.width = (width * minuteWidth);
 
-
-        // console.log(event.left);
         return event;
       });
     }
@@ -296,9 +290,10 @@ angular
 
       var results = [];
 
-      events.forEach(function (event) {
-        if (results.indexOf(event.event.eventAssigned) === -1)
+      events.forEach(function(event) {
+        if (results.indexOf(event.event.eventAssigned) === -1) {
           results.push(event.event.eventAssigned);
+        }
       });
 
       return results;
@@ -306,21 +301,14 @@ angular
 
     function getTodayWeekPosition(dayViewSplit, viewDate, dayViewStart, dayViewEnd) {
 
-      console.log(dayViewSplit, viewDate, dayViewStart)
-
       if (moment().isSame(viewDate, 'day')) {
 
         // get day time limit
         var dayViewStartM = moment(dayViewStart || '00:00', 'HH:mm');
         var dayViewEndM = moment(dayViewEnd || '23:59', 'HH:mm');
 
-        // get minute width
-        var minuteWidth = calendarConfig.dayView.hourWidth / 60,
-          divCenter = calendarConfig.dayView.hourWidth / 2;
-
         var numberOfDivs = 60 / dayViewSplit,
           blockHeight = numberOfDivs * 30; // 30px
-
 
         var oneMinute = blockHeight / 60;
 
@@ -328,8 +316,9 @@ angular
         var diff = moment(viewDate).diff(dayViewStartM, 'minutes'),
           checkEndDayLimit = moment(viewDate).isBefore(dayViewEndM, 'minutes');
 
-        if (diff > 0 && checkEndDayLimit)
+        if (diff > 0 && checkEndDayLimit) {
           return diff * oneMinute;
+        }
 
       }
 
@@ -352,9 +341,9 @@ angular
         var diff = moment(daySelected).diff(dayViewStartM, 'minutes'),
           checkEndDayLimit = moment(daySelected).isBefore(dayViewEndM, 'minutes');
 
-        if (diff > 0 && checkEndDayLimit)
+        if (diff > 0 && checkEndDayLimit) {
           return diff * minuteWidth + divCenter;
-
+        }
       }
 
       return -1;

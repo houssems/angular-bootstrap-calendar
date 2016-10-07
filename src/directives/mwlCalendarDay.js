@@ -10,8 +10,6 @@ angular
 
     vm.dayView = calendarConfig.dayView;
 
-
-
     vm.calendarEventTitle = calendarEventTitle;
 
     function refreshView() {
@@ -40,9 +38,6 @@ angular
         vm.todayTimePosition = calendarHelper.getTodayPosition(vm.viewDate, vm.dayViewStart);
         vm.dayTimeWidth = calendarHelper.getDayWidth(vm.dayViewStart, vm.dayViewEnd);
       }
-
-
-
     }
 
     $scope.$on('calendar.refreshView', refreshView);

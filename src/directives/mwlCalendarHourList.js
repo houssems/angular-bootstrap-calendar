@@ -16,8 +16,6 @@ angular
     }
 
     vm.todayTimePosition = calendarHelper.getTodayWeekPosition(vm.dayViewSplit, vm.viewDate, vm.dayViewStart, vm.dayViewEnd);
-
-
     function updateDays() {
 
       vm.dayViewSplit = parseInt(vm.dayViewSplit);
