@@ -16,8 +16,8 @@
       <span  class="weekDayLabel" ng-bind="day.weekDayLabel"></span>
       <!--<br>-->
       <small>
-        <span class="data-cal-date" 
-          data-cal-date 
+        <span class="data-cal-date"
+          data-cal-date
           ng-bind="day.dayLabel">
         </span>
       </small>
@@ -29,6 +29,7 @@
   <div class="cal-day-panel clearfix" ng-style="{height: vm.showTimes ? (vm.dayViewHeight + 'px') : 'auto'}">
 
     <mwl-calendar-hour-list
+      view="week"
       day-view-start="vm.dayViewStart"
       day-view-end="vm.dayViewEnd"
       day-view-split="vm.dayViewSplit"
@@ -45,7 +46,7 @@
     <div class="row WeekRdvItem" ng-repeat="row in vm.view.eventRows track by $index">
       <div class="col-xs-12">
         <div class="cal-row-fluid">
-          <div class="WeekRdv" 
+          <div class="WeekRdv"
             ng-repeat="eventRow in row.row track by eventRow.event.$id"
             ng-class="'cal-cell' + (vm.showTimes ? 1 : eventRow.span) + (vm.showTimes ? '' : ' cal-offset' + eventRow.offset)"
             ng-style="{

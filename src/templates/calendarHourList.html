@@ -17,7 +17,7 @@
 
 <div class="cal-day-panel-hour" ng-if="!vm.horizontalView">
 
-  <span class="detector-hours-two" ng-style="{top: vm.todayTimePosition + 'px'}"></span>
+  <span class="detector-hours-two" ng-style="{top: vm.todayTimePosition + 'px'}" ng-show="vm.showWeekTimeisNow"></span>
 
   <div class="cal-day-hour" ng-repeat="hour in vm.hourGrid track by $index">
 

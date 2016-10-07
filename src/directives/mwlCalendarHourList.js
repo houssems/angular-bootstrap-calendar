@@ -9,6 +9,7 @@ angular
     var vm = this;
 
     vm.horizontalView = $attrs.view && $attrs.view === 'day' && !calendarConfig.dayView.verticalView;
+    vm.showWeekTimeisNow = $attrs.view && $attrs.view === 'week' && calendarConfig.weekView.showNowBar;
 
     if (vm.horizontalView) {
       vm.dayTimeWidth = calendarHelper.getDayWidth(vm.dayViewStart, vm.dayViewEnd);
