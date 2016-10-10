@@ -1,4 +1,14 @@
 <a name="0.23.0"></a>
+# [0.23.0](https://github.com/mattlewis92/angular-bootstrap-calendar/compare/1.0.3...v0.23.0) (2016-10-10)
+
+
+
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/mattlewis92/angular-bootstrap-calendar/compare/1.0.3...v0.23.0) (2016-10-10)
+
+
+
+<a name="0.23.0"></a>
 # [0.23.0](https://github.com/mattlewis92/angular-bootstrap-calendar/compare/0.22.0...v0.23.0) (2016-08-12)
 
 
@@ -10,6 +20,10 @@
 
 ### Features
 
+* **dayView:**  add new configuration for day and week view
+* **dayView:**  add horizontal view by attendee list
+* **dayView:**  add now time bar 
+* **weekView:**  add now time bar 
 * **customTemplates:** allow a parent scope to be accessed in custom templates ([c84e9ab](https://github.com/mattlewis92/angular-bootstrap-calendar/commit/c84e9ab)), closes [#415](https://github.com/mattlewis92/angular-bootstrap-calendar/issues/415)
 * **customTemplates:** show a warning when a template doesnt exist in the template cache ([a7eee2a](https://github.com/mattlewis92/angular-bootstrap-calendar/commit/a7eee2a)), closes [#422](https://github.com/mattlewis92/angular-bootstrap-calendar/issues/422)
 * **dayView:** call the cell modifier for day view hour segments ([835f17b](https://github.com/mattlewis92/angular-bootstrap-calendar/commit/835f17b)), closes [#418](https://github.com/mattlewis92/angular-bootstrap-calendar/issues/418)
@@ -36,7 +50,8 @@ To migrate add a guard on the callback to check what the current view is and act
 
 
 ### Bug Fixes
-
+* **dayView:** fix drag and view in horizontal view
+* **dayView:** fix resize in horizontal view
 * **dayView:** fix event border colors ([93d1a35](https://github.com/mattlewis92/angular-bootstrap-calendar/commit/93d1a35))
 * **dayView:** have day view start and end respect minutes ([80bdc39](https://github.com/mattlewis92/angular-bootstrap-calendar/commit/80bdc39)), closes [#344](https://github.com/mattlewis92/angular-bootstrap-calendar/issues/344)
 * **dayView:** make hour list take up full width of overflow content ([22737dd](https://github.com/mattlewis92/angular-bootstrap-calendar/commit/22737dd)), closes [#389](https://github.com/mattlewis92/angular-bootstrap-calendar/issues/389)

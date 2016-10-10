@@ -138,7 +138,8 @@ $scope.events = [
     incrementsBadgeTotal: true, //If set to false then will not count towards the badge total amount on the month and year view
     recursOn: 'year', // If set the event will recur on the given period. Valid values are year or month
     cssClass: 'a-css-class-name', //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
-    allDay: false // set to true to display the event as an all day event on the day view
+    allDay: false, // set to true to display the event as an all day event on the day view
+    eventAssigned: 'Houssem' // group event by assigned list
   }
 ];
 ```
@@ -236,7 +237,21 @@ angular.module('myModule')
     calendarConfig.displayAllMonthEvents = true; //This will display all events on a month view even if they're not in the current month. Default false.
 
     calendarConfig.showTimesOnWeekView = true; //Make the week view more like the day view, with the caveat that event end times are ignored.
-
+    
+    calendarConfig.dayView.hasAttendee = true; // group events by assigned list
+    
+    calendarConfig.dayView.verticalView = false; // enable vertical view or horizontal in dayView
+    
+    calendarConfig.dayView.attendeeBlockHeight = 85; // height of each line in attendee list
+    
+    calendarConfig.dayView.eventHeight = 80; // height of each event inside attendee block
+    
+    calendarConfig.dayView.showNowBar = true; // activate now bar in dayView
+    
+    calendarConfig.weekView.showNowBar = true; // activate now bar in weekView
+    
+    calendarConfig.weekView.uniqueEvents = true; //show full height of an event if it's a unique event
+     
   });
 ```
 
