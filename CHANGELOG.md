@@ -1,4 +1,9 @@
 <a name="0.23.0"></a>
+# [0.23.0](https://github.com/mattlewis92/angular-bootstrap-calendar/compare/1.0.4...v0.23.0) (2016-10-10)
+
+
+
+<a name="0.23.0"></a>
 # [0.23.0](https://github.com/mattlewis92/angular-bootstrap-calendar/compare/1.0.3...v0.23.0) (2016-10-10)
 
 

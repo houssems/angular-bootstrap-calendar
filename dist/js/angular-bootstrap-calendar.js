@@ -3774,8 +3774,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var startDay = moment(dayViewStart || '00:00', 'HH:mm');
 	        var dayInMinutes = moment(dayViewEnd || '23:59', 'HH:mm').diff(startDay, 'minutes');
 
-	        var startEvent = moment(event.event.startsAt, 'HH:mm');
-	        var endEvent = moment(event.event.endsAt, 'HH:mm');
+	        var startEvent = moment(event.event.startsAt).format('HH:mm');
+	        startEvent = moment(startEvent, 'HH:mm');
+
+	        var endEvent = moment(event.event.endsAt).format('HH:mm');
+	        endEvent = moment(endEvent, 'HH:mm');
 
 	        var diff = startEvent.diff(startDay, 'minutes');
 
